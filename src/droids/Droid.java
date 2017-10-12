@@ -1,28 +1,27 @@
 package droids;
 
+/**
+ * @author okhytadmin
+ *
+ */
 public abstract class Droid {
 	private Integer power;
 
 	/**
-	 * @return Return the value of power
+	 * @return
 	 */
 	public Integer getPower() {
 		return power;
 	}
 
 	/**
-	 * @return Set the value of power
-	 * @param
+	 * @param power
 	 */
 	public void setPower(Integer power) {
 		this.power = power;
 	}
 
-	/**
-	 * @return Constructor by default
-	 */
 	public Droid() {
 
 	}
-
 }

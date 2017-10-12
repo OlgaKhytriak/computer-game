@@ -1,5 +1,9 @@
 package droids;
 
+/**
+ * @author okhytadmin
+ *
+ */
 public class MainProgram {
 
 	/*
@@ -16,7 +20,7 @@ public class MainProgram {
 	 */
 
 	/**
-	 * Program's entry point * @param args
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		new MainProgram().allActions();

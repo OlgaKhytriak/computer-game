@@ -1,4 +1,4 @@
-package droids.only;
+package droids;
 
 public interface RepairDroid {
 

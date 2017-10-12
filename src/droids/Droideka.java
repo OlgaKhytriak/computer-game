@@ -23,7 +23,7 @@ public class Droideka extends Droid implements BattleDroid {
 	 * @see droids.Droid#walk()
 	 */
 	@Override
-	public void walk() {
+	public void move() {
 
 	}
 

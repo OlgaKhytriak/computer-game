@@ -62,5 +62,5 @@ public abstract class Droid {
 		this.positionY = positionY;
 	}
 
-	abstract public void walk(byte x, byte y);
+	abstract public void move(byte x, byte y);
 }

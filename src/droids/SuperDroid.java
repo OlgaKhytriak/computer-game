@@ -17,8 +17,10 @@ public class SuperDroid extends Droid implements RepairDroid{
 	}
 
 	@Override
-	public void walk() {
+	public void move(byte x, byte y) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }

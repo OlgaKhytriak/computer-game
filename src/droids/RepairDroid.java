@@ -5,5 +5,6 @@ package droids;
  *
  */
 public interface RepairDroid {
+	public void repair();
 
 }

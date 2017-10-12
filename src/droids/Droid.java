@@ -6,6 +6,8 @@ package droids;
  */
 public abstract class Droid {
 	private Integer power;
+	
+	abstract public  void  walk();
 
 	/**
 	 * @return

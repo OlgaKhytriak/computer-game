@@ -1,3 +1,4 @@
+package droids.only;
 
 public abstract class Droid {
 	private Integer power;

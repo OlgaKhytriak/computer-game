@@ -1,3 +1,4 @@
+package droids.only;
 
 public class Droideka extends Droid implements BattleDroid{
 	/**

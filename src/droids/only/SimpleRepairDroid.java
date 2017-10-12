@@ -1,3 +1,4 @@
+package droids.only;
 
 public class SimpleRepairDroid extends Droid implements RepairDroid{
 	/**

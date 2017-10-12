@@ -1,3 +1,4 @@
+package droids.only;
 
 public class SuperDroid extends Droid implements RepairDroid, BattleDroid{
 	/**

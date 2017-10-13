@@ -27,6 +27,14 @@ public class MainProgram {
 	}
 
 	public void allActions() {
-
+		testTreatment() ;
+	}
+	
+	public void testTreatment() {
+		SimpleRepairDroid droidDoctor=new SimpleRepairDroid();
+		SimpleRepairDroid droidPatient=new SimpleRepairDroid();
+		droidDoctor.setEnergy(0);
+		droidPatient.setHealth(10);
+		droidDoctor.repair(droidPatient);
 	}
 }

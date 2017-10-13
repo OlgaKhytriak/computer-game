@@ -5,9 +5,8 @@ package droids;
  *
  */
 public class Droideka extends Droid implements BattleDroid {
-	private static final double EFFECTIVENESS_COEFFICIENT=2;
-	public static final Integer MAX_HEALTH=(int) (BASIC_HEALTH*EFFECTIVENESS_COEFFICIENT);
-	public static final Integer MAX_ENERGY=(int) (BASIC_ENERGY*EFFECTIVENESS_COEFFICIENT);
+	
+	
 	public Droideka() {
 		Integer h=BASIC_VALUE*2;
 		setMaxHealth(h);

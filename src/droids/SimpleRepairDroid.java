@@ -45,22 +45,5 @@ public class SimpleRepairDroid extends Droid implements RepairDroid {
 			System.out.println("You have no energy for treat!");
 	}
 
-	/*
-	 * If your energy >=3 you can walk. When you reach desired position your energy
-	 * reduces on 3 point. If your energy <3 you can't walk. Parameters are the
-	 * coordinates x, y of the game's field into which the droid shoul be moved
-	 */
-	@Override
-	public void move(Integer x, Integer y) {
-		if (getEnergy() >= 3) {
-			setPositionX(x);
-			setPositionY(y);
-			setEnergy(getEnergy() - 3);
-		} else {
-			System.out.println("You dont have enough energy to move");
-			return;
-		}
-
-	}
 
 }

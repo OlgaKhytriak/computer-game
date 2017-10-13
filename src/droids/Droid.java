@@ -8,17 +8,15 @@ public abstract class Droid {
 	/**
 	 * Basic heals value. It is used to define the MAX_HEALTH for different droids
 	 */
-	public static final Integer BASIC_VALUE=10;
+	public static final Integer BASIC_VALUE = 10;
 	private Integer power;
 	private Integer health;
 	private Integer energy;
-	private Integer positionX;
-	private Integer positionY;
 	private Integer maxHealth;
 	private Integer maxEnergy;
 	private Integer maxPower;
-		
-		/**
+
+	/**
 	 * @return
 	 */
 	public Integer getPower() {
@@ -51,24 +49,6 @@ public abstract class Droid {
 	public void setEnergy(Integer energy) {
 		this.energy = energy;
 	}
-
-	public Integer getPositionX() {
-		return positionX;
-	}
-
-	public void setPositionX(Integer positionX) {
-		this.positionX = positionX;
-	}
-
-	public Integer getPositionY() {
-		return positionY;
-	}
-
-	public void setPositionY(Integer positionY) {
-		this.positionY = positionY;
-	}
-
-	abstract public void move(Integer x, Integer y);
 
 	public Integer getMaxHealth() {
 		return maxHealth;

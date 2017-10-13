@@ -18,7 +18,7 @@ public class Droideka extends Droid implements BattleDroid {
 	 * @see droids.BattleDroid#shoot()
 	 */
 	@Override
-	public void shoot() {
+	public void shoot(Droid enemyDroid) {
 		// TODO Auto-generated method stub
 
 	}

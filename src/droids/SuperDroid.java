@@ -4,35 +4,26 @@ package droids;
  * @author okhytadmin
  *
  */
-public class SuperDroid extends Droid implements RepairDroid {
+public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
+	private final SimpleRepairDroid doctor; // Create doctor
+	private final  SimpleBattleDroid fighter;
 
 	public SuperDroid() {
 		Integer h = BASIC_VALUE * 3;
+		Integer en = BASIC_VALUE * 3;
 		setMaxHealth(h);
+		setMaxHealth(h);
+		setEnergy(en);
+		setEnergy(en);
+		setHealth(h);
+		 doctor=new SimpleRepairDroid();
+		 fighter=new SimpleBattleDroid();
 	}
 
 	public void repair(Droid injuredDroid) {
-		SimpleRepairDroid doctor = new SimpleRepairDroid(); // Create doctor
-		Integer h = injuredDroid.getHealth(); // Points of injuredDroid's health
-		Integer maxH = injuredDroid.getMaxHealth(); // Max health of injuredDroid
-		Integer needH = maxH - h; // How much points we need to injuredDroid be health
-		Integer en = getEnergy(); // Points of SuperDroid energy
-		if (needH <= en) { // If we have enough quantity of energy to treat injuredDroid up to 100%
-			doctor.setEnergy(needH); // Doctor has got SuperDroid's energy
-			doctor.repair(injuredDroid);
-			setEnergy(en - needH);
-			System.out.println("Energy of SuperDroid  = " + getEnergy());
-		} else if ((en > 0) & (needH > en)) {
-			doctor.setEnergy(en);
-			doctor.repair(injuredDroid);
-			setEnergy(0);
-			System.out.println("Energy of SuperDroid  = " + getEnergy());
-		}
-
-		else {
-			System.out.println("You have no energy for treat!");
-			return;
-		}
+		doctor.setEnergy(getEnergy());// Sent points of SuperDroid's energy to doctor
+		doctor.repair(injuredDroid);  // Doctor treats injuredDroid
+		setEnergy(doctor.getEnergy());// SuperDroid gets residual energy
 
 	}
 
@@ -52,6 +43,12 @@ public class SuperDroid extends Droid implements RepairDroid {
 			return;
 		}
 
+	}
+
+	@Override
+	public void shoot(Droid enemyDroid) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

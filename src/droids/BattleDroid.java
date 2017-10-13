@@ -5,5 +5,5 @@ package droids;
  *
  */
 public interface BattleDroid {
-	public void shoot();
+	public void shoot(Droid enemyDroid);
 }

@@ -8,7 +8,7 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 	private final SimpleRepairDroid doctor; // Create doctor
 	private final  SimpleBattleDroid fighter;
 
-	public SuperDroid() {
+	public SuperDroid() { /// !!!! CODE DUBLICATE
 		Integer h = BASIC_VALUE * 3;
 		Integer en = BASIC_VALUE * 3;
 		setMaxHealth(h);
@@ -18,6 +18,7 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 		setHealth(h);
 		 doctor=new SimpleRepairDroid();
 		 fighter=new SimpleBattleDroid();
+		 
 	}
 
 	public void repair(Droid injuredDroid) {

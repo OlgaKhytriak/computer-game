@@ -24,11 +24,16 @@ public class MainProgram {
 	 */
 	public static void main(String[] args) {
 		new MainProgram().allActions();
+		
 	}
 
 	public void allActions() {
 		//testTreatmentBySimpleRepairDroid() ;
-		testTreatmentBySuperDroid() ;
+		//testTreatmentBySuperDroid() ;
+		testABC();
+	}
+	public void testABC() {
+		C ccc=new C();
 	}
 	
 	public void testTreatmentBySimpleRepairDroid() {
@@ -41,8 +46,9 @@ public class MainProgram {
 	public void testTreatmentBySuperDroid() {
 		SuperDroid droidDoctor=new SuperDroid();
 		SimpleRepairDroid droidPatient=new SimpleRepairDroid();
-		droidDoctor.setEnergy(0);
-		droidPatient.setHealth(10);
+		droidDoctor.setEnergy(5);
+		droidPatient.setHealth(2);
 		droidDoctor.repair(droidPatient);
+		System.out.println("SuperDroid's energy = "+droidDoctor.getEnergy());
 	}
 }

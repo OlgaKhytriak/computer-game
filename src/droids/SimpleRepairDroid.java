@@ -6,13 +6,14 @@ package droids;
  */
 public class SimpleRepairDroid extends Droid implements RepairDroid {
 
-	public SimpleRepairDroid() {
+	public SimpleRepairDroid() {  /// !!!! CODE DUBLICATE
 		Integer h = BASIC_VALUE * 1;
 		Integer en = BASIC_VALUE * 1;
 		setMaxHealth(h);
 		setEnergy(en);
 		setEnergy(en);
 		setHealth(h);
+		
 	}
 
 	/*
@@ -37,7 +38,7 @@ public class SimpleRepairDroid extends Droid implements RepairDroid {
 				if (injuredDroidHealth < maxHelth)
 					System.out.println("But it is not full");
 				System.out.println("Health of injureddroid = " + injuredDroidHealth);
-				System.out.println("Energy of SimpleRepairDroid = " + energy);
+				System.out.println("Energy of doctor = " + energy);
 				setEnergy(energy);
 				injuredDroid.setHealth(injuredDroidHealth);
 			}

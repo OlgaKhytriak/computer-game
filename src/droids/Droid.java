@@ -15,24 +15,12 @@ public abstract class Droid {
 	private Integer maxHealth;
 	private Integer maxEnergy;
 	private Integer maxPower;
+	
 
 	/**
 	 * @return
 	 */
-	public Integer getPower() {
-		return power;
-	}
-
-	/**
-	 * @param power
-	 */
-	public void setPower(Integer power) {
-		this.power = power;
-	}
-
-	public Droid() {
-
-	}
+	
 
 	public Integer getHealth() {
 		return health;
@@ -73,4 +61,8 @@ public abstract class Droid {
 	public void setMaxPower(Integer maxPower) {
 		this.maxPower = maxPower;
 	}
+
+	
+	
+	
 }

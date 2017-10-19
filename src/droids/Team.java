@@ -10,35 +10,37 @@ public class Team {
 	public void printTeamList() {
 		System.out.println("It is the list of team members:");
 		for (Droid currentDroid : teamList) {
-			 System.out.println("Droid "+currentDroid.getClass().getName());
+			System.out.println("Droid " + currentDroid.getClass().getName());
 		}
 	}
+
 	public void fillInTeamList() {
 		System.out.println("Team has " + numberOfTeamMembers + " members");
 		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid");
 		Droid currentDroid = null;
 		int i = 0;
 		while (i < numberOfTeamMembers) {
-			Integer typeTeamMember = readerFromKeyboard.readIntegerFromKeyboard("Input the type of team member ¹ " + (i+1));
+			Integer typeTeamMember = readerFromKeyboard
+					.readIntegerFromKeyboard("Input the type of team member ¹ " + (i + 1));
 			switch (typeTeamMember) {
 			case 1:
-				 currentDroid=new SimpleRepairDroid();
+				currentDroid = new SimpleRepairDroid();
 				break;
 			case 2:
-				currentDroid=new SimpleBattleDroid();
+				currentDroid = new SimpleBattleDroid();
 				break;
 			case 3:
-				currentDroid=new SuperDroid();
+				currentDroid = new SuperDroid();
 				break;
 			default:
-				System.out.println("You enter wrong type of droid ¹ "+i+"Try again");
-			break;
+				System.out.println("You enter wrong type of droid ¹ " + i + "Try again");
+				break;
 			}
-			if (typeTeamMember==1||typeTeamMember==2||typeTeamMember==3) {
+			if (typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3) {
 				i++;
 				teamList.add(currentDroid);
 			}
-			
+
 		}
 	}
 

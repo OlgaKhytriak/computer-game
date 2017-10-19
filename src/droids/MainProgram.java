@@ -12,8 +12,8 @@ public class MainProgram {
 	 * public abstract class Droid; public class SuperDroid extends Droid implements
 	 * BattleDroid, RepairDroid; public class SimpleRepairDroid extends Droid
 	 * implements RepairDroid; public class Droideka extends Droid implements
-	 * BattleDroid; public interface BattleDroid; public interface RepairDroid; public
-	 * interface RoketDroid extends BattleDroid;
+	 * BattleDroid; public interface BattleDroid; public interface RepairDroid;
+	 * public interface RoketDroid extends BattleDroid;
 	 * 
 	 * тра написати прогу Battle among droids: Use all your knowledge. Droids should
 	 * have health, energy level, impact level etc. Use your creativity.
@@ -24,31 +24,41 @@ public class MainProgram {
 	 */
 	public static void main(String[] args) {
 		new MainProgram().allActions();
-		
+
 	}
 
 	public void allActions() {
-		//testTreatmentBySimpleRepairDroid() ;
-		//testTreatmentBySuperDroid() ;
-		testABC();
+		// testTreatmentBySimpleRepairDroid() ;
+		// testTreatmentBySuperDroid() ;
+		testTeamCreating();
 	}
-	public void testABC() {
-		C ccc=new C();
+
+	public void testTeamCreating() {
+		Keyboard reader = new Keyboard();
+		int n=reader.readIntegerFromKeyboard("Specify the amount of teams:");
+		Team team1=new Team(n);
+		team1.fillInTeamList();
+		Team team2=new Team(n);
+		team2.fillInTeamList();
+		team1.printTeamList();
+		team2.printTeamList();
+		
 	}
-	
+
 	public void testTreatmentBySimpleRepairDroid() {
-		SimpleRepairDroid droidDoctor=new SimpleRepairDroid();
-		SimpleRepairDroid droidPatient=new SimpleRepairDroid();
+		SimpleRepairDroid droidDoctor = new SimpleRepairDroid();
+		SimpleRepairDroid droidPatient = new SimpleRepairDroid();
 		droidDoctor.setEnergy(0);
 		droidPatient.setHealth(10);
 		droidDoctor.repair(droidPatient);
 	}
+
 	public void testTreatmentBySuperDroid() {
-		SuperDroid droidDoctor=new SuperDroid();
-		SimpleRepairDroid droidPatient=new SimpleRepairDroid();
+		SuperDroid droidDoctor = new SuperDroid();
+		SimpleRepairDroid droidPatient = new SimpleRepairDroid();
 		droidDoctor.setEnergy(5);
 		droidPatient.setHealth(2);
 		droidDoctor.repair(droidPatient);
-		System.out.println("SuperDroid's energy = "+droidDoctor.getEnergy());
+		System.out.println("SuperDroid's energy = " + droidDoctor.getEnergy());
 	}
 }

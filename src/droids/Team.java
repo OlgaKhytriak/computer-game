@@ -19,7 +19,7 @@ public class Team {
 		Droid currentDroid = null;
 		int i = 0;
 		while (i < numberOfTeamMembers) {
-			Integer typeTeamMember = readerFromKeyboard.readIntegerFromKeyboard("Input the type of team member ¹ " + i);
+			Integer typeTeamMember = readerFromKeyboard.readIntegerFromKeyboard("Input the type of team member ¹ " + (i+1));
 			switch (typeTeamMember) {
 			case 1:
 				 currentDroid=new SimpleRepairDroid();

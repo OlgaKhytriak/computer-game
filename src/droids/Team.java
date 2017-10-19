@@ -34,7 +34,7 @@ public class Team {
 				System.out.println("You enter wrong type of droid ¹ "+i+"Try again");
 			break;
 			}
-			if ((typeTeamMember==1)|(typeTeamMember==2)|(typeTeamMember==3)) {
+			if (typeTeamMember==1||typeTeamMember==2||typeTeamMember==3) {
 				i++;
 				teamList.add(currentDroid);
 			}

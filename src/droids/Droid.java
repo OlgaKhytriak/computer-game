@@ -15,6 +15,7 @@ public abstract class Droid {
 	private Integer maxHealth;
 	private Integer maxEnergy;
 	private Integer maxPower;
+	private DroidType droidtype;
 	
 
 	/**
@@ -60,6 +61,14 @@ public abstract class Droid {
 
 	public void setMaxPower(Integer maxPower) {
 		this.maxPower = maxPower;
+	}
+
+	public DroidType getDroidtype() {
+		return droidtype;
+	}
+
+	public void setDroidtype(DroidType droidtype) {
+		this.droidtype = droidtype;
 	}
 
 	

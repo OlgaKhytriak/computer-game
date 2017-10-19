@@ -9,6 +9,7 @@ public class SimpleBattleDroid extends Droid implements BattleDroid{
 		setEnergy(en);
 		setEnergy(en);
 		setHealth(h);
+		setDroidtype(DroidType.SIMPLE_BATTLE_DROID);
 		
 	}
 

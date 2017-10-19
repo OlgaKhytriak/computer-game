@@ -11,19 +11,25 @@ public Battle (Team team1, Team team2) {
 	setTeam2(team2);
 	
 }
-public int randomNumber() {
-	int min=1;
-	int max=team1.getNumberOfTeamMembers();
+public void fightTeam() {
+	
+}
+public void fightTwo(Droid droidAttacker,Droid droidVictim ) {
+	
+}
+private int randomNumber(Team team) {
+	int max=team.getNumberOfTeamMembers();
 	int rnd=ThreadLocalRandom.current().nextInt(0, max);
 	System.out.println(rnd);
 	return rnd;
 }
 private Droid choisAttacker(Team team) {
-	
-	return team.getTeamList().get(0);
+	int index=randomNumber(team);
+	return team.getTeamList().get(index);
 }
 private Droid choisVictim(Team team) {
-	return team.getTeamList().get(0);
+	int index=randomNumber(team);
+	return team.getTeamList().get(index);
 }
 public Team getTeam1() {
 	return team1;

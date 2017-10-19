@@ -15,14 +15,10 @@ public abstract class Droid {
 	private Integer maxHealth;
 	private Integer maxEnergy;
 	private Integer maxPower;
-	private DroidType droidtype;
-	
+	private DroidType droidType;
+	private boolean alive;
 
-	/**
-	 * @return
-	 */
-	
-
+		
 	public Integer getHealth() {
 		return health;
 	}
@@ -63,12 +59,20 @@ public abstract class Droid {
 		this.maxPower = maxPower;
 	}
 
-	public DroidType getDroidtype() {
-		return droidtype;
+	public DroidType getDroidType() {
+		return droidType;
 	}
 
-	public void setDroidtype(DroidType droidtype) {
-		this.droidtype = droidtype;
+	public void setDroidType(DroidType droidtype) {
+		this.droidType = droidtype;
+	}
+
+	public boolean getalive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
 
 	

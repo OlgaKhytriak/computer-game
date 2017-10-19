@@ -1,6 +1,7 @@
 package droids;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
 	private Integer numberOfTeamMembers;
@@ -12,6 +13,11 @@ public class Team {
 		for (Droid currentDroid : teamList) {
 			System.out.println("Droid " + currentDroid.getClass().getName());
 		}
+	}
+
+	public void deleteElement(Droid DroidToDelete) {
+		int indexOfDroidToDelete=teamList.indexOf(DroidToDelete);
+		
 	}
 
 	public void fillInTeamList() {

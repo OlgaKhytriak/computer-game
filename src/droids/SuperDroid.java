@@ -16,7 +16,8 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 		setEnergy(en);
 		setEnergy(en);
 		setHealth(h);
-		setDroidtype(DroidType.SUPER_DROID);
+		setDroidType(DroidType.SUPER_DROID);
+		setAlive(true);
 		doctor=new SimpleRepairDroid();
 		fighter=new SimpleBattleDroid();
 		 

@@ -13,7 +13,8 @@ public class SimpleRepairDroid extends Droid implements RepairDroid {
 		setEnergy(en);
 		setEnergy(en);
 		setHealth(h);
-		setDroidtype(DroidType.SIMPLE_REPAIR_DROID);
+		setDroidType(DroidType.SIMPLE_REPAIR_DROID);
+		setAlive(true);
 	}
 
 	/*

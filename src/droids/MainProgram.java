@@ -8,11 +8,6 @@ public class MainProgram {
 
 	/*
 	 * є кусок початкового псевдокоду
-	 * 123
-	 * 123
-	 * 123
-	 * 123
-	 * 123
 	 * 
 	 * public abstract class Droid; public class SuperDroid extends Droid implements
 	 * BattleDroid, RepairDroid; public class SimpleRepairDroid extends Droid

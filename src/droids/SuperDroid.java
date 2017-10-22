@@ -12,8 +12,7 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 		Integer h = BASIC_VALUE * 3;
 		Integer en = BASIC_VALUE * 3;
 		setMaxHealth(h);
-		setMaxHealth(h);
-		setEnergy(en);
+		setMaxEnergy(en);
 		setEnergy(en);
 		setHealth(h);
 		setDroidType(DroidType.SUPER_DROID);
@@ -32,7 +31,9 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 
 	@Override
 	public void shoot(Droid enemyDroid) {
-		// TODO Auto-generated method stub
+		fighter.setEnergy(getEnergy());
+		fighter.shoot(enemyDroid);
+		setEnergy(fighter.getEnergy());
 		
 	}
 

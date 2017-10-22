@@ -37,13 +37,14 @@ public class MainProgram {
 		Keyboard reader = new Keyboard();
 		int n=reader.readIntegerFromKeyboard("Specify the amount of teams:");
 		Team team1=new Team(n);
-		//team1.fillInTeamList();
+		team1.fillInTeamList();
 		Team team2=new Team(n);
-		//team2.fillInTeamList();
+		team2.fillInTeamList();
 		//team1.printTeamList();
 		//team2.printTeamList();
 		Battle battle=new Battle(team1, team2);
-		battle.randomNumber();
+		//battle.randomNumber();
+		battle.startBattle();
 		
 	}
 

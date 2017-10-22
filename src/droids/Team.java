@@ -8,16 +8,28 @@ public class Team {
 	private ArrayList<Droid> teamList;
 	private final Keyboard readerFromKeyboard;
 
-	public void printTeamList() {
-		System.out.println("It is the list of team members:");
+	public Integer sumEnergy() {
+		Integer sum=0;
 		for (Droid currentDroid : teamList) {
-			System.out.println("Droid " + currentDroid.getClass().getName());
+			sum+=currentDroid.getEnergy();
 		}
+		return sum;
+	}
+	public void printTeamList() {
+		if (getTeamList().isEmpty()) {
+			System.out.println("The team is empty");
+		}
+		int i = 0;
+		for (Droid currentDroid : teamList) {
+			i++;
+			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health="+currentDroid.getHealth()+"; energy="+currentDroid.getEnergy()+")");
+		}
+		System.out.println("  ");
 	}
 
 	public void deleteElement(Droid DroidToDelete) {
-		int indexOfDroidToDelete=teamList.indexOf(DroidToDelete);
-		
+		int indexOfDroidToDelete = teamList.indexOf(DroidToDelete);
+		teamList.remove(indexOfDroidToDelete);
 	}
 
 	public void fillInTeamList() {

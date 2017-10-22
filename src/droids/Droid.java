@@ -9,7 +9,6 @@ public abstract class Droid {
 	 * Basic heals value. It is used to define the MAX_HEALTH for different droids
 	 */
 	public static final Integer BASIC_VALUE = 10;
-	private Integer power;
 	private Integer health;
 	private Integer energy;
 	private Integer maxHealth;
@@ -18,7 +17,10 @@ public abstract class Droid {
 	private DroidType droidType;
 	private boolean alive;
 
-		
+	public void printInfo() {
+		System.out.println("Droid type:"+droidType+"; health="+health+"; energy="+energy+"; alive="+alive);
+	}
+	
 	public Integer getHealth() {
 		return health;
 	}
@@ -67,7 +69,7 @@ public abstract class Droid {
 		this.droidType = droidtype;
 	}
 
-	public boolean getalive() {
+	public boolean getAlive() {
 		return alive;
 	}
 

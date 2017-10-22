@@ -5,24 +5,58 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Battle {
 	private Team team1;
 	private Team team2;
+	private Integer turn;
 
 	public Battle(Team team1, Team team2) {
 		setTeam1(team1);
 		setTeam2(team2);
+		turn = 0;
+	}
+
+	public void startBattle() {
+		System.out.println("-----TURN  ¹  " + turn + "  ------");
+		team1.printTeamList();
+		team2.printTeamList();
+		if (0 == team1.sumEnergy() || 0 == team2.sumEnergy()) {
+			System.out.println("Both teams have no energy");
+			return;
+		}
+		while (!team1.getTeamList().isEmpty() && !team2.getTeamList().isEmpty()) {
+			turn++;
+			System.out.println("-----TURN  ¹  " + turn + "  (1->2)------");
+			if (0 == team1.sumEnergy() || 0 == team2.sumEnergy()) {
+				System.out.println("Both teams have no energy");
+				return;
+			}
+			fightTeams(team1, team2);
+			team1.printTeamList();
+			team2.printTeamList();
+			if (!team2.getTeamList().isEmpty()) {
+				turn++;
+				System.out.println("-----TURN  ¹  " + turn + "  (2->1) ------");
+				fightTeams(team2, team1);
+				team1.printTeamList();
+				team2.printTeamList();
+			} else {
+				System.out.println("Team 1 win  !!!!!");
+				return;
+			}
+		}
+		if (team1.getTeamList().isEmpty()) {
+			System.out.println("Team 2 win  !!!!!");
+		}
 
 	}
 
-	public void fightTeams() {
-		while (!team1.getTeamList().isEmpty() || !team2.getTeamList().isEmpty()) {
-			Droid drAttacker = choisRandomDroid(team1);
-			Droid drVictim = choisRandomDroid(team2);
-			fightTwo(drAttacker, drVictim);
-			if (!drVictim.getalive()) {
-				team1.
-			}
-
+	public void fightTeams(Team teamAttacker, Team teamVictim) {
+		// System.out.println("Teams start fighting");
+		Droid drAttacker1 = choisRandomDroid(teamAttacker);
+		Droid drVictim1 = choisRandomDroid(teamVictim);
+		fightTwo(drAttacker1, drVictim1);
+		if (!drVictim1.getAlive()) {
+			teamVictim.deleteElement(drVictim1);
 		}
-
+		// System.out.println("Teams finish fighting");
 	}
 
 	public void fightTwo(Droid droidAttacker, Droid droidVictim) {

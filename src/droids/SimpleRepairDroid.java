@@ -11,7 +11,7 @@ public class SimpleRepairDroid extends Droid implements RepairDroid {
 		Integer en = BASIC_VALUE * 1;
 		setMaxHealth(h);
 		setEnergy(en);
-		setEnergy(en);
+		setMaxEnergy(en);
 		setHealth(h);
 		setDroidType(DroidType.SIMPLE_REPAIR_DROID);
 		setAlive(true);

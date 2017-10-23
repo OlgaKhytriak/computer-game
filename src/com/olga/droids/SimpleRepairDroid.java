@@ -4,7 +4,7 @@ package com.olga.droids;
  * @author okhytadmin
  *
  */
-public class SimpleRepairDroid extends Droid implements RepairDroid {
+public class SimpleRepairDroid extends SimpleDroid implements RepairDroid {
 
 	public SimpleRepairDroid() {  /// !!!! CODE DUBLICATE
 		Integer h = BASIC_VALUE * 1;
@@ -21,7 +21,7 @@ public class SimpleRepairDroid extends Droid implements RepairDroid {
 	 * SimpleRepairDroid treats injuredDroid by conversation ALL its own energy into
 	 * the injuredDroid's life points
 	 */
-	public void repair(Droid injuredDroid) {
+	public void repair(SimpleDroid injuredDroid) {
 		Integer injuredDroidHealth = injuredDroid.getHealth();
 		Integer maxHelth = injuredDroid.getMaxHealth();
 		Integer energy = getEnergy();

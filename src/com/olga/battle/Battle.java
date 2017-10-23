@@ -3,7 +3,7 @@ package com.olga.battle;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.olga.droids.BattleDroid;
-import com.olga.droids.Droid;
+import com.olga.droids.SimpleDroid;
 import com.olga.droids.DroidType;
 import com.olga.droids.RepairDroid;
 
@@ -61,10 +61,10 @@ public class Battle {
 
 	public void fightTeams(Team teamAttacker, Team teamVictim) {
 		// System.out.println("Teams start fighting");
-		Droid drAttacker1 = choisRandomDroid(teamAttacker);
-		Droid drVictim1 = choisRandomDroid(teamVictim);
+		SimpleDroid drAttacker1 = choisRandomDroid(teamAttacker);
+		SimpleDroid drVictim1 = choisRandomDroid(teamVictim);
 		fightTwo(drAttacker1, drVictim1);
-		if (!drVictim1.getAlive()) {
+		if (!drVictim1.isAlive()) {
 			teamVictim.deleteElement(drVictim1);
 			Integer numberOfTeaMembers=teamVictim.getCurrentNumberOfTeamMembers();
 			teamVictim.setNumberOfTeamMembers(numberOfTeaMembers);
@@ -72,7 +72,7 @@ public class Battle {
 		// System.out.println("Teams finish fighting");
 	}
 
-	public void fightTwo(Droid droidAttacker, Droid droidVictim) {
+	public void fightTwo(SimpleDroid droidAttacker, SimpleDroid droidVictim) {
 		if (0 == droidAttacker.getEnergy()) {
 			System.out.println("No energy"); //якщо нема енергії він мав би передати хід
 			return;
@@ -83,7 +83,7 @@ public class Battle {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;// What is it? : I don't understand what I have done with interface in this case???
 			droidCanShoot.shoot(droidVictim);
 		} else { ///ТУТ НЕ ПРАЦЮЄ
-			Droid injuredDroid=droidAttacker.getMyTeam().findFirstInjuredDroid();
+			SimpleDroid injuredDroid=droidAttacker.getMyTeam().findFirstInjuredDroid();
 			if (injuredDroid.equals(null)) {
 				System.out.println("No injured droids for repairing");
 			}
@@ -95,7 +95,7 @@ public class Battle {
 
 	}
 
-	private Droid choisRandomDroid(Team team) {
+	private SimpleDroid choisRandomDroid(Team team) {
 		int max = team.getCurrentNumberOfTeamMembers();
 		int index = ThreadLocalRandom.current().nextInt(0, max);
 		//System.out.println(index);

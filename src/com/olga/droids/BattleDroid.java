@@ -4,6 +4,6 @@ package com.olga.droids;
  * @author okhytadmin
  *
  */
-public interface BattleDroid {
-	public void shoot(Droid enemyDroid);
+public interface BattleDroid extends Droid{
+	public void shoot(SimpleDroid enemyDroid);
 }

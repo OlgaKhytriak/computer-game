@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.olga.additional.Keyboard;
-import com.olga.droids.Droid;
+import com.olga.droids.SimpleDroid;
 import com.olga.droids.SimpleBattleDroid;
 import com.olga.droids.SimpleRepairDroid;
 import com.olga.droids.SuperDroid;
@@ -12,10 +12,10 @@ import com.olga.droids.SuperDroid;
 public class Team {
 	private Integer beginNumberOfTeamMembers;
 	private Integer currentNumberOfTeamMembers;
-	private ArrayList<Droid> teamList;
+	private ArrayList<SimpleDroid> teamList;
 	private final Keyboard readerFromKeyboard;
 
-	public Droid findFirstInjuredDroid() {
+	public SimpleDroid findFirstInjuredDroid() {
 		//boolean weFound = false;
 		for (int i = 0; i < teamList.size(); i++) {
 			if (teamList.get(i).getHealth()<teamList.get(i).getMaxHealth()) {
@@ -29,7 +29,7 @@ public class Team {
 
 	public Integer sumEnergy() {
 		Integer sum = 0;
-		for (Droid currentDroid : teamList) {
+		for (SimpleDroid currentDroid : teamList) {
 			sum += currentDroid.getEnergy();
 		}
 		// System.out.println("Sum energy="+sum);
@@ -42,7 +42,7 @@ public class Team {
 			System.out.println("The team is empty");
 		}
 		int i = 0;
-		for (Droid currentDroid : teamList) {
+		for (SimpleDroid currentDroid : teamList) {
 			i++;
 			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health=" + currentDroid.getHealth()
 					+ "; energy=" + currentDroid.getEnergy() + ").  ");
@@ -50,7 +50,7 @@ public class Team {
 		System.out.println("  ");
 	}
 
-	public void deleteElement(Droid DroidToDelete) {
+	public void deleteElement(SimpleDroid DroidToDelete) {
 		int indexOfDroidToDelete = teamList.indexOf(DroidToDelete);
 		teamList.remove(indexOfDroidToDelete);
 	}
@@ -58,7 +58,7 @@ public class Team {
 	public void fillInTeamList() {
 		System.out.println("Team has " + beginNumberOfTeamMembers + " members");
 		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid");
-		Droid currentDroid = null;
+		SimpleDroid currentDroid = null;
 		int i = 0;
 		while (i < beginNumberOfTeamMembers) {
 			Integer typeTeamMember = readerFromKeyboard
@@ -91,7 +91,7 @@ public class Team {
 	 */
 	public Team(Integer numberOfTeamMembers) { // Constructor with number of team's members
 		setNumberOfTeamMembers(numberOfTeamMembers);
-		setTeamList(new ArrayList<Droid>(numberOfTeamMembers));
+		setTeamList(new ArrayList<SimpleDroid>(numberOfTeamMembers));
 		readerFromKeyboard = new Keyboard();
 	}
 
@@ -103,11 +103,11 @@ public class Team {
 		this.beginNumberOfTeamMembers = beginNumberOfTeamMembers;
 	}
 
-	public ArrayList<Droid> getTeamList() {
+	public ArrayList<SimpleDroid> getTeamList() {
 		return teamList;
 	}
 
-	public void setTeamList(ArrayList<Droid> teamList) {
+	public void setTeamList(ArrayList<SimpleDroid> teamList) {
 		this.teamList = teamList;
 	}
 

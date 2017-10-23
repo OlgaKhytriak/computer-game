@@ -1,6 +1,6 @@
 package com.olga.droids;
 
-public class SimpleBattleDroid extends Droid implements BattleDroid {
+public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 
 	public SimpleBattleDroid() {
 		Integer h = BASIC_VALUE * 1;
@@ -15,7 +15,7 @@ public class SimpleBattleDroid extends Droid implements BattleDroid {
 	}
 
 	@Override
-	public void shoot(Droid enemyDroid) {
+	public void shoot(SimpleDroid enemyDroid) {
 		/*System.out.print("BEFORE SHOOT. Shooted droid info. ");
 		printInfo();
 		System.out.print("BEFORE SHOOT. Wounded droid info.");

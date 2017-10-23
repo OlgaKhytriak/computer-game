@@ -4,7 +4,7 @@ package com.olga.droids;
  * @author okhytadmin
  *
  */
-public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
+public class SuperDroid extends SimpleDroid implements RepairDroid, BattleDroid {
 	private final SimpleRepairDroid doctor; // Create doctor
 	private final  SimpleBattleDroid fighter;
 
@@ -22,7 +22,7 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 		 
 	}
 
-	public void repair(Droid injuredDroid) {
+	public void repair(SimpleDroid injuredDroid) {
 		doctor.setEnergy(getEnergy());// Sent points of SuperDroid's energy to doctor
 		doctor.repair(injuredDroid);  // Doctor treats injuredDroid
 		setEnergy(doctor.getEnergy());// SuperDroid gets residual energy
@@ -30,7 +30,7 @@ public class SuperDroid extends Droid implements RepairDroid, BattleDroid {
 	}
 
 	@Override
-	public void shoot(Droid enemyDroid) {
+	public void shoot(SimpleDroid enemyDroid) {
 		fighter.setEnergy(getEnergy());
 		fighter.shoot(enemyDroid);
 		setEnergy(fighter.getEnergy());

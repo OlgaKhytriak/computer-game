@@ -4,7 +4,7 @@ package com.olga.droids;
  * @author okhytadmin
  *
  */
-public interface RepairDroid {
-	public void repair(Droid injuredDroid);
+public interface RepairDroid extends Droid{
+	public void repair(SimpleDroid injuredDroid);
 
 }

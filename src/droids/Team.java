@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-	private Integer numberOfTeamMembers;
+	private Integer beginNumberOfTeamMembers;
+	private Integer currentNumberOfTeamMembers;
 	private ArrayList<Droid> teamList;
 	private final Keyboard readerFromKeyboard;
 
@@ -13,16 +14,18 @@ public class Team {
 		for (Droid currentDroid : teamList) {
 			sum+=currentDroid.getEnergy();
 		}
+		//System.out.println("Sum energy="+sum);
 		return sum;
 	}
-	public void printTeamList() {
+	public void printTeamList(String s) {
+		System.out.print(s);
 		if (getTeamList().isEmpty()) {
 			System.out.println("The team is empty");
 		}
 		int i = 0;
 		for (Droid currentDroid : teamList) {
 			i++;
-			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health="+currentDroid.getHealth()+"; energy="+currentDroid.getEnergy()+")");
+			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health="+currentDroid.getHealth()+"; energy="+currentDroid.getEnergy()+").  ");
 		}
 		System.out.println("  ");
 	}
@@ -33,11 +36,11 @@ public class Team {
 	}
 
 	public void fillInTeamList() {
-		System.out.println("Team has " + numberOfTeamMembers + " members");
+		System.out.println("Team has " + beginNumberOfTeamMembers + " members");
 		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid");
 		Droid currentDroid = null;
 		int i = 0;
-		while (i < numberOfTeamMembers) {
+		while (i < beginNumberOfTeamMembers) {
 			Integer typeTeamMember = readerFromKeyboard
 					.readIntegerFromKeyboard("Input the type of team member ¹ " + (i + 1));
 			switch (typeTeamMember) {
@@ -72,11 +75,11 @@ public class Team {
 	}
 
 	public Integer getNumberOfTeamMembers() {
-		return numberOfTeamMembers;
+		return beginNumberOfTeamMembers;
 	}
 
-	public void setNumberOfTeamMembers(Integer numberOfTeamMembers) {
-		this.numberOfTeamMembers = numberOfTeamMembers;
+	public void setNumberOfTeamMembers(Integer beginNumberOfTeamMembers) {
+		this.beginNumberOfTeamMembers = beginNumberOfTeamMembers;
 	}
 
 	public ArrayList<Droid> getTeamList() {
@@ -85,5 +88,11 @@ public class Team {
 
 	public void setTeamList(ArrayList<Droid> teamList) {
 		this.teamList = teamList;
+	}
+	public Integer getCurrentNumberOfTeamMembers() {
+		return teamList.size();
+	}
+	public void setCurrentNumberOfTeamMembers(Integer currentNumberOfTeamMembers) {
+		this.currentNumberOfTeamMembers = currentNumberOfTeamMembers;
 	}
 }

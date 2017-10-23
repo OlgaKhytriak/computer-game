@@ -15,30 +15,36 @@ public class Battle {
 
 	public void startBattle() {
 		System.out.println("-----TURN  ¹  " + turn + "  ------");
-		team1.printTeamList();
-		team2.printTeamList();
-		if (0 == team1.sumEnergy() || 0 == team2.sumEnergy()) {
-			System.out.println("Both teams have no energy");
+		team1.printTeamList("TEAM ¹ 1: ");
+		team2.printTeamList("TEAM ¹ 2: ");
+			if (0 == team1.sumEnergy() && 0 == team2.sumEnergy()) {
+			System.out.println("Both teams have no energy. ");
+			team1.printTeamList("TEAM ¹ 1: ");
+			team2.printTeamList("TEAM ¹ 2: ");
+			System.out.println(" !!!   Dead heat  !!!!!");
 			return;
 		}
 		while (!team1.getTeamList().isEmpty() && !team2.getTeamList().isEmpty()) {
 			turn++;
 			System.out.println("-----TURN  ¹  " + turn + "  (1->2)------");
-			if (0 == team1.sumEnergy() || 0 == team2.sumEnergy()) {
+			if (0 == team1.sumEnergy() && 0 == team2.sumEnergy()) {
 				System.out.println("Both teams have no energy");
+				team1.printTeamList("TEAM ¹ 1: ");
+				team2.printTeamList("TEAM ¹ 2: ");
+				System.out.println(" !!!   Dead heat  !!!!!");
 				return;
 			}
 			fightTeams(team1, team2);
-			team1.printTeamList();
-			team2.printTeamList();
+			team1.printTeamList("TEAM ¹ 1: ");
+			team2.printTeamList("TEAM ¹ 2: ");
 			if (!team2.getTeamList().isEmpty()) {
 				turn++;
 				System.out.println("-----TURN  ¹  " + turn + "  (2->1) ------");
 				fightTeams(team2, team1);
-				team1.printTeamList();
-				team2.printTeamList();
+				team1.printTeamList("TEAM ¹ 1: ");
+				team2.printTeamList("TEAM ¹ 2: ");
 			} else {
-				System.out.println("Team 1 win  !!!!!");
+				System.out.println("!!!   Team 1 win   !!!!!");
 				return;
 			}
 		}
@@ -55,6 +61,8 @@ public class Battle {
 		fightTwo(drAttacker1, drVictim1);
 		if (!drVictim1.getAlive()) {
 			teamVictim.deleteElement(drVictim1);
+			Integer numberOfTeaMembers=teamVictim.getCurrentNumberOfTeamMembers();
+			teamVictim.setNumberOfTeamMembers(numberOfTeaMembers);
 		}
 		// System.out.println("Teams finish fighting");
 	}
@@ -77,8 +85,9 @@ public class Battle {
 	}
 
 	private Droid choisRandomDroid(Team team) {
-		int max = team.getNumberOfTeamMembers();
+		int max = team.getCurrentNumberOfTeamMembers();
 		int index = ThreadLocalRandom.current().nextInt(0, max);
+		//System.out.println(index);
 		return team.getTeamList().get(index);
 	}
 

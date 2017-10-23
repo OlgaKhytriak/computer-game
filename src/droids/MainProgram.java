@@ -1,5 +1,7 @@
 package droids;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * @author okhytadmin
  *
@@ -31,6 +33,7 @@ public class MainProgram {
 		// testTreatmentBySimpleRepairDroid() ;
 		// testTreatmentBySuperDroid() ;
 		testBattle();
+		
 	}
 
 	public void testBattle() {

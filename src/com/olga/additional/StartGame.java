@@ -1,6 +1,8 @@
-package com.olga.battle;
+package com.olga.additional;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.olga.battle.Battle;
+import com.olga.battle.Team;
 import com.olga.droids.SimpleRepairDroid;
 import com.olga.droids.SuperDroid;
 
@@ -8,7 +10,7 @@ import com.olga.droids.SuperDroid;
  * @author okhytadmin
  *
  */
-public class MainProgram {
+public class StartGame {
 
 	/*
 	 * є кусок початкового псевдокоду
@@ -27,7 +29,7 @@ public class MainProgram {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new MainProgram().allActions();
+		new StartGame().allActions();
 
 	}
 

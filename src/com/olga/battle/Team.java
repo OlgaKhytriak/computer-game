@@ -3,6 +3,7 @@ package com.olga.battle;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.olga.additional.Keyboard;
 import com.olga.droids.Droid;
 import com.olga.droids.SimpleBattleDroid;
 import com.olga.droids.SimpleRepairDroid;
@@ -88,7 +89,7 @@ public class Team {
 	/**
 	 * @param numberOfTeamMembers
 	 */
-	Team(Integer numberOfTeamMembers) { // Constructor with number of team's members
+	public Team(Integer numberOfTeamMembers) { // Constructor with number of team's members
 		setNumberOfTeamMembers(numberOfTeamMembers);
 		setTeamList(new ArrayList<Droid>(numberOfTeamMembers));
 		readerFromKeyboard = new Keyboard();

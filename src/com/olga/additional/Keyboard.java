@@ -1,4 +1,4 @@
-package com.olga.battle;
+package com.olga.additional;
 
 import java.util.Scanner;
 

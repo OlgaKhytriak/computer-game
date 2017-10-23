@@ -16,6 +16,7 @@ public abstract class Droid {
 	private Integer maxPower;
 	private DroidType droidType;
 	private boolean alive;
+	private Team myTeam;
 
 	public void printInfo() {
 		System.out.println("Droid type:"+droidType+"; health="+health+"; energy="+energy+"; alive="+alive);
@@ -75,6 +76,14 @@ public abstract class Droid {
 
 	public void setAlive(boolean alive) {
 		this.alive = alive;
+	}
+
+	public Team getMyTeam() {
+		return myTeam;
+	}
+
+	public void setMyTeam(Team myTeam) {
+		this.myTeam = myTeam;
 	}
 
 	

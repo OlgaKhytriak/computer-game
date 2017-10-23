@@ -69,17 +69,23 @@ public class Battle {
 
 	public void fightTwo(Droid droidAttacker, Droid droidVictim) {
 		if (0 == droidAttacker.getEnergy()) {
-			System.out.println("No energy");
+			System.out.println("No energy"); //якщо нема енергії він мав би передати хід
 			return;
 		}
 		DroidType attackerType = droidAttacker.getDroidType();
 		DroidType victimType = droidVictim.getDroidType();
 		if (DroidType.SIMPLE_BATTLE_DROID.equals(attackerType) || DroidType.SUPER_DROID.equals(attackerType)) {
-			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
+			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;// What is it? : I don't understand what I have done with interface in this case???
 			droidCanShoot.shoot(droidVictim);
-		} else {
-			RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
-			// !!Дописати що він лікує когось із своєї команди
+		} else { ///ТУТ НЕ ПРАЦЮЄ
+			Droid injuredDroid=droidAttacker.getMyTeam().findFirstInjuredDroid();
+			if (injuredDroid.equals(null)) {
+				System.out.println("No injured droids for repairing");
+			}
+			else {
+				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
+				droidCanRepair.repair(injuredDroid);
+			}
 		}
 
 	}

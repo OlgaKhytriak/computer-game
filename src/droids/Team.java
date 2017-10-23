@@ -9,14 +9,27 @@ public class Team {
 	private ArrayList<Droid> teamList;
 	private final Keyboard readerFromKeyboard;
 
-	public Integer sumEnergy() {
-		Integer sum=0;
-		for (Droid currentDroid : teamList) {
-			sum+=currentDroid.getEnergy();
+	public Droid findFirstInjuredDroid() {
+		//boolean weFound = false;
+		for (int i = 0; i < teamList.size(); i++) {
+			if (teamList.get(i).getHealth()<teamList.get(i).getMaxHealth()) {
+				//weFound = true;
+				return teamList.get(i);
+			}
+
 		}
-		//System.out.println("Sum energy="+sum);
+		return null;
+	}
+
+	public Integer sumEnergy() {
+		Integer sum = 0;
+		for (Droid currentDroid : teamList) {
+			sum += currentDroid.getEnergy();
+		}
+		// System.out.println("Sum energy="+sum);
 		return sum;
 	}
+
 	public void printTeamList(String s) {
 		System.out.print(s);
 		if (getTeamList().isEmpty()) {
@@ -25,7 +38,8 @@ public class Team {
 		int i = 0;
 		for (Droid currentDroid : teamList) {
 			i++;
-			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health="+currentDroid.getHealth()+"; energy="+currentDroid.getEnergy()+").  ");
+			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health=" + currentDroid.getHealth()
+					+ "; energy=" + currentDroid.getEnergy() + ").  ");
 		}
 		System.out.println("  ");
 	}
@@ -60,6 +74,7 @@ public class Team {
 			if (typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3) {
 				i++;
 				teamList.add(currentDroid);
+				currentDroid.setMyTeam(this);
 			}
 
 		}
@@ -89,9 +104,11 @@ public class Team {
 	public void setTeamList(ArrayList<Droid> teamList) {
 		this.teamList = teamList;
 	}
+
 	public Integer getCurrentNumberOfTeamMembers() {
 		return teamList.size();
 	}
+
 	public void setCurrentNumberOfTeamMembers(Integer currentNumberOfTeamMembers) {
 		this.currentNumberOfTeamMembers = currentNumberOfTeamMembers;
 	}

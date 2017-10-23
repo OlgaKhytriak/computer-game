@@ -1,4 +1,4 @@
-package droids;
+package com.olga.droids;
 
 public class SimpleBattleDroid extends Droid implements BattleDroid {
 

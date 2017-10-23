@@ -1,7 +1,12 @@
-package droids;
+package com.olga.battle;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.olga.droids.Droid;
+import com.olga.droids.SimpleBattleDroid;
+import com.olga.droids.SimpleRepairDroid;
+import com.olga.droids.SuperDroid;
 
 public class Team {
 	private Integer beginNumberOfTeamMembers;

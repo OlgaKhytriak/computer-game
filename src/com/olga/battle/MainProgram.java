@@ -1,6 +1,8 @@
-package droids;
-
+package com.olga.battle;
 import java.util.concurrent.ThreadLocalRandom;
+
+import com.olga.droids.SimpleRepairDroid;
+import com.olga.droids.SuperDroid;
 
 /**
  * @author okhytadmin

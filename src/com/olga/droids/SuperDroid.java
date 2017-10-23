@@ -1,4 +1,4 @@
-package droids;
+package com.olga.droids;
 
 /**
  * @author okhytadmin

@@ -1,6 +1,11 @@
-package droids;
+package com.olga.battle;
 
 import java.util.concurrent.ThreadLocalRandom;
+
+import com.olga.droids.BattleDroid;
+import com.olga.droids.Droid;
+import com.olga.droids.DroidType;
+import com.olga.droids.RepairDroid;
 
 public class Battle {
 	private Team team1;

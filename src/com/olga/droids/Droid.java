@@ -1,4 +1,6 @@
-package droids;
+package com.olga.droids;
+
+import com.olga.battle.Team;
 
 /**
  * @author okhytadmin

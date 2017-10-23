@@ -1,4 +1,4 @@
-package droids;
+package com.olga.battle;
 
 import java.util.Scanner;
 

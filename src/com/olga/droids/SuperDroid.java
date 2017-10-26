@@ -5,21 +5,16 @@ package com.olga.droids;
  *
  */
 public class SuperDroid extends SimpleDroid implements RepairDroid, BattleDroid {
+	private static final Integer maxEnergy = BASIC_VALUE * 3;
+	private static final Integer maxHealth = BASIC_VALUE * 3;
 	private final SimpleRepairDroid doctor; // Create doctor
 	private final  SimpleBattleDroid fighter;
 
 	public SuperDroid() { /// !!!! CODE DUBLICATE
-		Integer h = BASIC_VALUE * 3;
-		Integer en = BASIC_VALUE * 3;
-		setMaxHealth(h);
-		setMaxEnergy(en);
-		setEnergy(en);
-		setHealth(h);
+		super(maxEnergy,maxHealth);
 		setDroidType(DroidType.SUPER_DROID);
-		setAlive(true);
 		doctor=new SimpleRepairDroid();
-		fighter=new SimpleBattleDroid();
-		 
+		fighter=new SimpleBattleDroid(); 
 	}
 
 	public void repair(SimpleDroid injuredDroid) {

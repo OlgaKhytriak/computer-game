@@ -5,16 +5,13 @@ package com.olga.droids;
  *
  */
 public class SimpleRepairDroid extends SimpleDroid implements RepairDroid {
-
-	public SimpleRepairDroid() {  /// !!!! CODE DUBLICATE
-		Integer h = BASIC_VALUE * 1;
-		Integer en = BASIC_VALUE * 1;
-		setMaxHealth(h);
-		setEnergy(en);
-		setMaxEnergy(en);
-		setHealth(h);
+	private static final Integer maxEnergy = BASIC_VALUE * 2;
+	private static final Integer maxHealth = BASIC_VALUE * 2;
+	
+	public SimpleRepairDroid() {  
+		super(maxEnergy,maxHealth);
 		setDroidType(DroidType.SIMPLE_REPAIR_DROID);
-		setAlive(true);
+		
 	}
 
 	/*

@@ -9,7 +9,7 @@ import com.olga.battle.Team;
  */
 public abstract class SimpleDroid implements Droid{
 	/**
-	 * Basic heals value. It is used to define the MAX_HEALTH for different droids
+	 * Basic health value. It is used to define the MAX_HEALTH for different droids
 	 */
 	public static final Integer BASIC_VALUE = 10;
 	private Integer health;
@@ -18,11 +18,20 @@ public abstract class SimpleDroid implements Droid{
 	private Integer maxEnergy;
 	private Integer maxPower;
 	private DroidType droidType;
-	private boolean alive;
 	private Team myTeam;
 	
+	protected SimpleDroid(Integer maxEnergy,Integer maxHealth) {
+		setMaxHealth(maxEnergy);
+		setMaxEnergy(maxHealth);
+		setEnergy(maxEnergy);
+		setHealth(maxHealth);
+	}
+	
+	public boolean isAlive() {
+		return !(0==health);
+	}
 	public void printInfo() {
-		System.out.println("Droid type:"+droidType+"; health="+health+"; energy="+energy+"; alive="+alive);
+		System.out.println("Droid type:"+droidType+"; health="+health+"; energy="+energy);
 	}
 	
 	public Integer getHealth() {
@@ -73,14 +82,7 @@ public abstract class SimpleDroid implements Droid{
 		this.droidType = droidtype;
 	}
 
-	public boolean isAlive() {
-		return alive;
-	}
-
-	public void setAlive(boolean alive) {
-		this.alive = alive;
-	}
-
+	
 	public Team getMyTeam() {
 		return myTeam;
 	}

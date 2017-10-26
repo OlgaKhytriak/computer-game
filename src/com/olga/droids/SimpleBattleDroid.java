@@ -3,18 +3,13 @@ package com.olga.droids;
 import com.olga.additional.PrinterOfDriodInformation;
 
 public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
+	private static final Integer maxEnergy = BASIC_VALUE * 2;
+	private static final Integer maxHealth = BASIC_VALUE * 2;
 	private final PrinterOfDriodInformation droidInfoPrinter;
 
 	public SimpleBattleDroid() {
-		Integer h = BASIC_VALUE * 1;
-		Integer en = BASIC_VALUE * 1;
-		setMaxHealth(h);
-		setMaxEnergy(en);
-		setEnergy(en);
-		setHealth(h);
+		super(maxEnergy,maxHealth);
 		setDroidType(DroidType.SIMPLE_BATTLE_DROID);
-		setAlive(true);
-		// setDroidInfoPrinter(new PrintDriodInformation(this));
 		droidInfoPrinter = new PrinterOfDriodInformation(this);
 	}
 
@@ -23,9 +18,9 @@ public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 		Integer enemyDroidHealth = enemyDroid.getHealth();
 		Integer energy = getEnergy();
 		if (energy > 0) {
-			while ((enemyDroidHealth > 0) && (energy > 0)) {
+			while ((enemyDroidHealth > 0) && (energy > 0)) {//ALL energy is used to reduce heals points.
 				enemyDroidHealth--;
-				energy--;
+				energy--; //
 			}
 			enemyDroid.setHealth(enemyDroidHealth);
 			setEnergy(energy);
@@ -33,6 +28,8 @@ public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 			droidInfoPrinter.printEnergyInformation();
 		}
 	}
+	
+	
 
 	public PrinterOfDriodInformation getDroidInfoPrinter() {
 		return droidInfoPrinter;

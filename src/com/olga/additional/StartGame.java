@@ -3,6 +3,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import com.olga.battle.Battle;
 import com.olga.battle.Team;
+import com.olga.droids.SimpleBattleDroid;
 import com.olga.droids.SimpleRepairDroid;
 import com.olga.droids.SuperDroid;
 
@@ -37,6 +38,9 @@ public class StartGame {
 		// testTreatmentBySimpleRepairDroid() ;
 		// testTreatmentBySuperDroid() ;
 		testBattle();
+		SimpleBattleDroid d=new SimpleBattleDroid();
+		PrinterOfDriodInformation prt = new PrinterOfDriodInformation(d);
+		prt.printEnergyInformation();
 		
 	}
 

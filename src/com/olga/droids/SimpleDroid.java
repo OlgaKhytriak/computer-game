@@ -1,5 +1,6 @@
 package com.olga.droids;
 
+import com.olga.additional.PrinterOfDriodInformation;
 import com.olga.battle.Team;
 
 /**
@@ -19,7 +20,7 @@ public abstract class SimpleDroid implements Droid{
 	private DroidType droidType;
 	private boolean alive;
 	private Team myTeam;
-
+	
 	public void printInfo() {
 		System.out.println("Droid type:"+droidType+"; health="+health+"; energy="+energy+"; alive="+alive);
 	}
@@ -88,6 +89,7 @@ public abstract class SimpleDroid implements Droid{
 		this.myTeam = myTeam;
 	}
 
+	
 	
 	
 	

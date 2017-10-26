@@ -1,6 +1,9 @@
 package com.olga.droids;
 
+import com.olga.additional.PrinterOfDriodInformation;
+
 public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
+	private final PrinterOfDriodInformation droidInfoPrinter;
 
 	public SimpleBattleDroid() {
 		Integer h = BASIC_VALUE * 1;
@@ -11,55 +14,28 @@ public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 		setHealth(h);
 		setDroidType(DroidType.SIMPLE_BATTLE_DROID);
 		setAlive(true);
-
+		// setDroidInfoPrinter(new PrintDriodInformation(this));
+		droidInfoPrinter = new PrinterOfDriodInformation(this);
 	}
 
 	@Override
 	public void shoot(SimpleDroid enemyDroid) {
-		/*System.out.print("BEFORE SHOOT. Shooted droid info. ");
-		printInfo();
-		System.out.print("BEFORE SHOOT. Wounded droid info.");
-		enemyDroid.printInfo();
-		*/
 		Integer enemyDroidHealth = enemyDroid.getHealth();
 		Integer energy = getEnergy();
-
-		if (0 == energy) {
-			System.out.println("You have no energy to shoot!");
-			return;
-		}
-		/*if (energy > 0) {
-			if (enemyDroidHealth >= energy) {
-
-				while ((enemyDroidHealth > 0) && (energy > 0)) {
-					enemyDroidHealth--;
-					energy--;
-				}
-			} else {
-				//System.out.println("");
-				enemyDroid.setHealth(0);
-				setEnergy(energy - enemyDroidHealth);
-			}
-		}*/
 		if (energy > 0) {
 			while ((enemyDroidHealth > 0) && (energy > 0)) {
 				enemyDroidHealth--;
 				energy--;
-			enemyDroid.setHealth(0);
-			setEnergy(energy - enemyDroidHealth);
+			}
+			enemyDroid.setHealth(enemyDroidHealth);
+			setEnergy(energy);
+		} else {
+			droidInfoPrinter.printEnergyInformation();
 		}
 	}
 
-		enemyDroid.setHealth(enemyDroidHealth);
-		setEnergy(energy);
-		if (0 == enemyDroid.getHealth()) {
-			enemyDroid.setAlive(false);
-		}
-		/*System.out.print("AFTER SHOOT. Shooted droid info. ");
-		printInfo();
-		System.out.print("AFTER SHOOT. Wounded droid info.");
-		enemyDroid.printInfo();
-		*/
+	public PrinterOfDriodInformation getDroidInfoPrinter() {
+		return droidInfoPrinter;
 	}
 
 }

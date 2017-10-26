@@ -1,13 +1,13 @@
-package com.olga.additional;
+package com.olga.droidsgame.io;
 
-import com.olga.battle.Team;
-import com.olga.droids.SimpleDroid;
+import com.olga.droidsgame.battle.Team;
+import com.olga.droidsgame.droids.SimpleDroid;
 
-public class TeamInformation {
+public class TeamInfoDisplayer {
 	private Team team;
 	private SimpleDroid droid;
 
-	public TeamInformation(Team team) {
+	public TeamInfoDisplayer(Team team) {
 		setTeam(team);
 	}
 	

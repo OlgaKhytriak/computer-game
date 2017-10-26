@@ -1,11 +1,11 @@
-package com.olga.additional;
+package com.olga.droidsgame.io;
 
-import com.olga.droids.SimpleDroid;
+import com.olga.droidsgame.droids.SimpleDroid;
 
-public class DriodInformation {
+public class DriodInfoDisplayer {
 	private SimpleDroid droid;
 
-	public DriodInformation(SimpleDroid droid) {
+	public DriodInfoDisplayer(SimpleDroid droid) {
 		setDroid(droid);
 	}
 

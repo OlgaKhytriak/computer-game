@@ -1,7 +1,7 @@
-package com.olga.droids;
+package com.olga.droidsgame.droids;
 
-import com.olga.additional.DriodInformation;
-import com.olga.battle.Team;
+import com.olga.droidsgame.battle.Team;
+import com.olga.droidsgame.io.DriodInfoDisplayer;
 
 /**
  * @author okhytadmin

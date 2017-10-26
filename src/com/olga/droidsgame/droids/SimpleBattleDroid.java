@@ -1,16 +1,16 @@
-package com.olga.droids;
+package com.olga.droidsgame.droids;
 
-import com.olga.additional.DriodInformation;
+import com.olga.droidsgame.io.DriodInfoDisplayer;
 
 public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 	private static final Integer maxEnergy = BASIC_VALUE * 2;
 	private static final Integer maxHealth = BASIC_VALUE * 2;
-	private final DriodInformation droidInfo;
+	private final DriodInfoDisplayer droidInfo;
 
 	public SimpleBattleDroid() {
 		super(maxEnergy,maxHealth);
 		setDroidType(DroidType.SIMPLE_BATTLE_DROID);
-		droidInfo = new DriodInformation(this);
+		droidInfo = new DriodInfoDisplayer(this);
 	}
 	@Override
 	public void shoot(SimpleDroid enemyDroid) {
@@ -24,7 +24,7 @@ public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 			setEnergy(energy);
 			droidInfo.printEnergyInformation();	
 	}
-	public DriodInformation getDroidInfoPrinter() {
+	public DriodInfoDisplayer getDroidInfoPrinter() {
 		return droidInfo;
 	}
 }

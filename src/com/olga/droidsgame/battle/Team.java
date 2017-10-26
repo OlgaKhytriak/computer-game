@@ -1,13 +1,13 @@
-package com.olga.battle;
+package com.olga.droidsgame.battle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.olga.additional.Keyboard;
-import com.olga.droids.SimpleDroid;
-import com.olga.droids.SimpleBattleDroid;
-import com.olga.droids.SimpleRepairDroid;
-import com.olga.droids.SuperDroid;
+import com.olga.droidsgame.droids.SimpleBattleDroid;
+import com.olga.droidsgame.droids.SimpleDroid;
+import com.olga.droidsgame.droids.SimpleRepairDroid;
+import com.olga.droidsgame.droids.SuperDroid;
+import com.olga.droidsgame.io.Keyboard;
 
 public class Team {
 	private Integer beginNumberOfTeamMembers;

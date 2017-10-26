@@ -1,4 +1,4 @@
-package com.olga.droids;
+package com.olga.droidsgame.droids;
 
 public interface Droid {
 	public boolean isAlive();

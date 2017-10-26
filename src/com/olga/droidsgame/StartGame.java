@@ -1,11 +1,13 @@
-package com.olga.additional;
+package com.olga.droidsgame;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.olga.battle.Battle;
-import com.olga.battle.Team;
-import com.olga.droids.SimpleBattleDroid;
-import com.olga.droids.SimpleRepairDroid;
-import com.olga.droids.SuperDroid;
+import com.olga.droidsgame.battle.Battle;
+import com.olga.droidsgame.battle.Team;
+import com.olga.droidsgame.droids.SimpleBattleDroid;
+import com.olga.droidsgame.droids.SimpleRepairDroid;
+import com.olga.droidsgame.droids.SuperDroid;
+import com.olga.droidsgame.io.DriodInfoDisplayer;
+import com.olga.droidsgame.io.Keyboard;
 
 /**
  * @author okhytadmin
@@ -39,7 +41,7 @@ public class StartGame {
 		// testTreatmentBySuperDroid() ;
 		testBattle();
 		SimpleBattleDroid d=new SimpleBattleDroid();
-		DriodInformation prt = new DriodInformation(d);
+		DriodInfoDisplayer prt = new DriodInfoDisplayer(d);
 		prt.printEnergyInformation();
 		
 	}

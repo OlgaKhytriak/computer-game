@@ -1,26 +1,26 @@
-package com.olga.battle;
+package com.olga.droidsgame.battle;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.olga.additional.TeamInformation;
-import com.olga.droids.BattleDroid;
-import com.olga.droids.SimpleDroid;
-import com.olga.droids.DroidType;
-import com.olga.droids.RepairDroid;
+import com.olga.droidsgame.droids.BattleDroid;
+import com.olga.droidsgame.droids.DroidType;
+import com.olga.droidsgame.droids.RepairDroid;
+import com.olga.droidsgame.droids.SimpleDroid;
+import com.olga.droidsgame.io.TeamInfoDisplayer;
 
 public class Battle {
 	private Team team1;
 	private Team team2;
 	private Integer turn;
-	private TeamInformation teamInfo1;
-	private TeamInformation teamInfo2;
+	private TeamInfoDisplayer teamInfo1;
+	private TeamInfoDisplayer teamInfo2;
 
 	public Battle(Team team1, Team team2) {
 		setTeam1(team1);
 		setTeam2(team2);
 		turn = 0;
-		teamInfo1=new TeamInformation(team1);
-		teamInfo2=new TeamInformation(team2);
+		teamInfo1=new TeamInfoDisplayer(team1);
+		teamInfo2=new TeamInfoDisplayer(team2);
 	}
 
 	public void startBattle() {

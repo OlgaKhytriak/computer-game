@@ -1,4 +1,4 @@
-package com.olga.additional;
+package com.olga.droidsgame.io;
 
 import java.util.Scanner;
 /** Ñlass for reading from a keyboard different types of data

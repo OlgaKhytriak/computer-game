@@ -16,13 +16,10 @@ public class Team {
 	private final Keyboard readerFromKeyboard;
 
 	public SimpleDroid findFirstInjuredDroid() {
-		//boolean weFound = false;
 		for (int i = 0; i < teamList.size(); i++) {
-			if (teamList.get(i).getHealth()<teamList.get(i).getMaxHealth()) {
-				//weFound = true;
+			if (teamList.get(i).getHealth() < teamList.get(i).getMaxHealth()) {
 				return teamList.get(i);
 			}
-
 		}
 		return null;
 	}

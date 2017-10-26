@@ -1,6 +1,6 @@
 package com.olga.droids;
 
-import com.olga.additional.PrinterOfDriodInformation;
+import com.olga.additional.DriodInformation;
 import com.olga.battle.Team;
 
 /**

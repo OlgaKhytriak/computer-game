@@ -39,7 +39,7 @@ public class StartGame {
 		// testTreatmentBySuperDroid() ;
 		testBattle();
 		SimpleBattleDroid d=new SimpleBattleDroid();
-		PrinterOfDriodInformation prt = new PrinterOfDriodInformation(d);
+		DriodInformation prt = new DriodInformation(d);
 		prt.printEnergyInformation();
 		
 	}

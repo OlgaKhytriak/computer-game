@@ -2,6 +2,7 @@ package com.olga.battle;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.olga.additional.TeamInformation;
 import com.olga.droids.BattleDroid;
 import com.olga.droids.SimpleDroid;
 import com.olga.droids.DroidType;
@@ -11,21 +12,25 @@ public class Battle {
 	private Team team1;
 	private Team team2;
 	private Integer turn;
+	private TeamInformation teamInfo1;
+	private TeamInformation teamInfo2;
 
 	public Battle(Team team1, Team team2) {
 		setTeam1(team1);
 		setTeam2(team2);
 		turn = 0;
+		teamInfo1=new TeamInformation(team1);
+		teamInfo2=new TeamInformation(team2);
 	}
 
 	public void startBattle() {
 		System.out.println("-----TURN  ¹  " + turn + "  ------");
-		team1.printTeamList("TEAM ¹ 1: ");
-		team2.printTeamList("TEAM ¹ 2: ");
+		teamInfo1.printTeamList();
+		teamInfo2.printTeamList();
 			if (0 == team1.sumEnergy() && 0 == team2.sumEnergy()) {
 			System.out.println("Both teams have no energy. ");
-			team1.printTeamList("TEAM ¹ 1: ");
-			team2.printTeamList("TEAM ¹ 2: ");
+			teamInfo1.printTeamList();
+			teamInfo2.printTeamList();
 			System.out.println(" !!!   Dead heat  !!!!!");
 			return;
 		}
@@ -34,20 +39,20 @@ public class Battle {
 			System.out.println("-----TURN  ¹  " + turn + "  (1->2)------");
 			if (0 == team1.sumEnergy() && 0 == team2.sumEnergy()) {
 				System.out.println("Both teams have no energy");
-				team1.printTeamList("TEAM ¹ 1: ");
-				team2.printTeamList("TEAM ¹ 2: ");
+				teamInfo1.printTeamList();
+				teamInfo2.printTeamList();
 				System.out.println(" !!!   Dead heat  !!!!!");
 				return;
 			}
 			fightTeams(team1, team2);
-			team1.printTeamList("TEAM ¹ 1: ");
-			team2.printTeamList("TEAM ¹ 2: ");
+			teamInfo1.printTeamList();
+			teamInfo2.printTeamList();
 			if (!team2.getTeamList().isEmpty()) {
 				turn++;
 				System.out.println("-----TURN  ¹  " + turn + "  (2->1) ------");
 				fightTeams(team2, team1);
-				team1.printTeamList("TEAM ¹ 1: ");
-				team2.printTeamList("TEAM ¹ 2: ");
+				teamInfo1.printTeamList();
+				teamInfo2.printTeamList();
 			} else {
 				System.out.println("!!!   Team 1 win   !!!!!");
 				return;
@@ -65,7 +70,7 @@ public class Battle {
 		SimpleDroid drVictim1 = choisRandomDroid(teamVictim);
 		fightTwo(drAttacker1, drVictim1);
 		if (!drVictim1.isAlive()) {
-			teamVictim.deleteElement(drVictim1);
+			teamVictim.deleteTeamMember(drVictim1);
 			Integer numberOfTeaMembers=teamVictim.getCurrentNumberOfTeamMembers();
 			teamVictim.setNumberOfTeamMembers(numberOfTeaMembers);
 		}

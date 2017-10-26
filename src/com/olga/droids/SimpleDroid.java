@@ -26,12 +26,8 @@ public abstract class SimpleDroid implements Droid{
 		setEnergy(maxEnergy);
 		setHealth(maxHealth);
 	}
-	
 	public boolean isAlive() {
 		return !(0==health);
-	}
-	public void printInfo() {
-		System.out.println("Droid type:"+droidType+"; health="+health+"; energy="+energy);
 	}
 	
 	public Integer getHealth() {
@@ -82,7 +78,6 @@ public abstract class SimpleDroid implements Droid{
 		this.droidType = droidtype;
 	}
 
-	
 	public Team getMyTeam() {
 		return myTeam;
 	}

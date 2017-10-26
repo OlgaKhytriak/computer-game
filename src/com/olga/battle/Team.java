@@ -14,12 +14,12 @@ public class Team {
 	private Integer currentNumberOfTeamMembers;
 	private ArrayList<SimpleDroid> teamList;
 	private final Keyboard readerFromKeyboard;
+	private String teamName;
 
 	public SimpleDroid findFirstInjuredDroid() {
 		for (SimpleDroid droid : teamList) {
 			if (droid.getHealth() < droid.getMaxHealth()) {
-				droid.printInfo();
-					return droid;
+				return droid;
 			}
 		}
 		return null;
@@ -30,32 +30,18 @@ public class Team {
 		for (SimpleDroid currentDroid : teamList) {
 			sum += currentDroid.getEnergy();
 		}
-		// System.out.println("Sum energy="+sum);
 		return sum;
 	}
 
-	public void printTeamList(String s) {
-		System.out.print(s);
-		if (getTeamList().isEmpty()) {
-			System.out.println("The team is empty");
-		}
-		int i = 0;
-		for (SimpleDroid currentDroid : teamList) {
-			i++;
-			System.out.print("[" + i + "] " + currentDroid.getDroidType() + " (health=" + currentDroid.getHealth()
-					+ "; energy=" + currentDroid.getEnergy() + ").  ");
-		}
-		System.out.println("  ");
-	}
-
-	public void deleteElement(SimpleDroid DroidToDelete) {
-		int indexOfDroidToDelete = teamList.indexOf(DroidToDelete);
+	public void deleteTeamMember(SimpleDroid droidToDelete) {
+		int indexOfDroidToDelete = teamList.indexOf(droidToDelete);
 		teamList.remove(indexOfDroidToDelete);
 	}
 
 	public void fillInTeamList() {
-		System.out.println("Team has " + beginNumberOfTeamMembers + " members");
+		System.out.println("Team has " + beginNumberOfTeamMembers + " members.");
 		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid");
+		
 		SimpleDroid currentDroid = null;
 		int i = 0;
 		while (i < beginNumberOfTeamMembers) {
@@ -91,6 +77,12 @@ public class Team {
 		setNumberOfTeamMembers(numberOfTeamMembers);
 		setTeamList(new ArrayList<SimpleDroid>(numberOfTeamMembers));
 		readerFromKeyboard = new Keyboard();
+		String s = readerFromKeyboard.readStringFromKeyboard("Enter the name of team");
+		setTeamName(s);
+	}
+
+	public Integer getBeginNumberOfTeamMembers() {
+		return beginNumberOfTeamMembers;
 	}
 
 	public Integer getNumberOfTeamMembers() {
@@ -115,5 +107,13 @@ public class Team {
 
 	public void setCurrentNumberOfTeamMembers(Integer currentNumberOfTeamMembers) {
 		this.currentNumberOfTeamMembers = currentNumberOfTeamMembers;
+	}
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 }

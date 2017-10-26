@@ -24,10 +24,7 @@ public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
 			setEnergy(energy);
 			droidInfo.printEnergyInformation();	
 	}
-	
-	
 	public DriodInformation getDroidInfoPrinter() {
 		return droidInfo;
 	}
-
 }

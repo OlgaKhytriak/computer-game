@@ -84,7 +84,8 @@ public class Battle {
 			droidCanShoot.shoot(droidVictim);
 		} else { ///“”“ Õ≈ œ–¿÷ﬁ™
 			SimpleDroid injuredDroid=droidAttacker.getMyTeam().findFirstInjuredDroid();
-			if (injuredDroid.equals(null)) {
+			//injuredDroid.printInfo();
+			if (null==injuredDroid) {
 				System.out.println("No injured droids for repairing");
 			}
 			else {

@@ -15,7 +15,7 @@ public class Team {
 	private ArrayList<SimpleDroid> teamList;
 	private final Keyboard readerFromKeyboard;
 	private String teamName;
-	private DroidChooser droidChooser;
+	
 
 	
 	/**Constructor with number of team's members
@@ -27,7 +27,7 @@ public class Team {
 		readerFromKeyboard = new Keyboard();
 		String s = readerFromKeyboard.readStringFromKeyboard("Enter the name of team");
 		setTeamName(s);
-		setDroidChooser(droidChooser);
+		
 	}
 	/** Find the first injured (current health points < max potential heals points) droin in the team.
 	 * @return {@link SimpleDroid} the first injured droid in the team ;
@@ -126,10 +126,5 @@ public class Team {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	public DroidChooser getDroidChooser() {
-		return droidChooser;
-	}
-	public void setDroidChooser(DroidChooser droidChooser) {
-		this.droidChooser = droidChooser;
-	}
+	
 }

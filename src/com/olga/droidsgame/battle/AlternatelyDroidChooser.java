@@ -9,17 +9,19 @@ public class AlternatelyDroidChooser implements DroidChooser {
 	private Team team;
 
 	public AlternatelyDroidChooser(Team team) {
-
+		setTeam(team);
+		setDroidJustMadeMove(team.getTeamList().get(0));
 	}
 
 	@Override
-	public SimpleDroid choose(Team team) {
+	public SimpleDroid choose() {
 		SimpleDroid droid = null;
 		int current = team.getTeamList().indexOf(droidJustMadeMove);
 		int next;
 		next = (current + 1) % (team.getCurrentNumberOfTeamMembers());
 		System.out.println(next);
 		droid = team.getTeamList().get(next);
+		setDroidJustMadeMove(droid);
 		return droid;
 	}
 

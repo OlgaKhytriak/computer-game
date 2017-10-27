@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.olga.droidsgame.droids.SimpleBattleDroid;
+import com.olga.droidsgame.droids.SimpleChargeDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
 import com.olga.droidsgame.droids.SimpleRepairDroid;
 import com.olga.droidsgame.droids.SuperDroid;
@@ -15,23 +16,27 @@ public class Team {
 	private ArrayList<SimpleDroid> teamList;
 	private final Keyboard readerFromKeyboard;
 	private String teamName;
-	
 
-	
-	/**Constructor with number of team's members
+	/**
+	 * Constructor with number of team's members
+	 * 
 	 * @param numberOfTeamMembers
 	 */
-	public Team(Integer numberOfTeamMembers) { 
+	public Team(Integer numberOfTeamMembers) {
 		setNumberOfTeamMembers(numberOfTeamMembers);
 		setTeamList(new ArrayList<SimpleDroid>(numberOfTeamMembers));
 		readerFromKeyboard = new Keyboard();
 		String s = readerFromKeyboard.readStringFromKeyboard("Enter the name of team");
 		setTeamName(s);
-		
+
 	}
-	/** Find the first injured (current health points < max potential heals points) droin in the team.
-	 * @return {@link SimpleDroid} the first injured droid in the team ;
-	 *  Return <b>null</b> if there is no injured droids in the team
+
+	/**
+	 * Find the first injured (current health points < max potential heals points)
+	 * droin in the team.
+	 * 
+	 * @return {@link SimpleDroid} the first injured droid in the team ; Return
+	 *         <b>null</b> if there is no injured droids in the team
 	 */
 	public SimpleDroid findFirstInjuredDroid() {
 		for (SimpleDroid droid : teamList) {
@@ -41,9 +46,18 @@ public class Team {
 		}
 		return null;
 	}
+	
+	public SimpleDroid findFirstDischargedDroid() {
+		for (SimpleDroid droid : teamList) {
+			if (droid.getEnergy() < droid.getMaxEnergy()) {
+				return droid;
+			}
+		}
+		return null;
+	}
 
 	/**
-	 * @return The {@link Integer}  sum of energy of all droids in the current team
+	 * @return The {@link Integer} sum of energy of all droids in the current team
 	 */
 	public Integer sumEnergy() {
 		Integer sum = 0;
@@ -60,8 +74,8 @@ public class Team {
 
 	public void fillInTeamList() {
 		System.out.println("Team has " + beginNumberOfTeamMembers + " members.");
-		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid");
-		
+		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid; 4- ChargeDroid");
+
 		SimpleDroid currentDroid = null;
 		int i = 0;
 		while (i < beginNumberOfTeamMembers) {
@@ -77,11 +91,14 @@ public class Team {
 			case 3:
 				currentDroid = new SuperDroid();
 				break;
+			case 4:
+				currentDroid = new SimpleChargeDroid();
+				break;
 			default:
 				System.out.println("You enter wrong type of droid ¹ " + i + "Try again");
 				break;
 			}
-			if (typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3) {
+			if (typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3|| typeTeamMember == 4) {
 				i++;
 				teamList.add(currentDroid);
 				currentDroid.setMyTeam(this);
@@ -90,7 +107,6 @@ public class Team {
 		}
 	}
 
-	
 	public Integer getBeginNumberOfTeamMembers() {
 		return beginNumberOfTeamMembers;
 	}
@@ -126,5 +142,5 @@ public class Team {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	
+
 }

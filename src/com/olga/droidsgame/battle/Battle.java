@@ -6,6 +6,7 @@ import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.droids.BattleDroid;
 import com.olga.droidsgame.droids.RepairDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
+import com.olga.droidsgame.droids.СhargeDroid;
 import com.olga.droidsgame.io.TeamInfoDisplayer;
 
 public class Battle {
@@ -26,6 +27,7 @@ public class Battle {
 		setDroidChooser1(droidChooser1);
 		setDroidChooser2(droidChooser2);
 	}
+
 	public void startBattle() {
 		System.out.println("-----TURN  №  " + turn + "  ------");
 		teamInfo1.printTeamList();
@@ -64,13 +66,9 @@ public class Battle {
 		if (team1.getTeamList().isEmpty()) {
 			System.out.println("Team 2 win  !!!!!");
 		}
-
 	}
-	
+
 	public void attakTeam1OnTeam2() {
-	//public void fightTeams(Team teamAttacker, Team teamVictim) {
-		// System.out.println("Teams start fighting");
-		// !!!!!return droidChooser1.choose();
 		SimpleDroid drAttacker = droidChooser1.choose();
 		SimpleDroid drVictim = droidChooser2.choose();
 		fightTwo(drAttacker, drVictim);
@@ -79,26 +77,23 @@ public class Battle {
 			Integer numberOfTeaMembers = team2.getCurrentNumberOfTeamMembers();
 			team2.setNumberOfTeamMembers(numberOfTeaMembers);
 		}
-		// System.out.println("Teams finish fighting");
+
 	}
+
 	public void attakTeam2OnTeam1() {
-		//public void fightTeams(Team teamAttacker, Team teamVictim) {
-			// System.out.println("Teams start fighting");
-			// !!!!!return droidChooser1.choose();
-			SimpleDroid drAttacker = droidChooser2.choose();
-			SimpleDroid drVictim = droidChooser1.choose();
-			fightTwo(drAttacker, drVictim);
-			if (!drVictim.isAlive()) {
-				team1.deleteTeamMember(drVictim);
-				Integer numberOfTeaMembers = team1.getCurrentNumberOfTeamMembers();
-				team1.setNumberOfTeamMembers(numberOfTeaMembers);
-			}
-			// System.out.println("Teams finish fighting");
+		SimpleDroid drAttacker = droidChooser2.choose();
+		SimpleDroid drVictim = droidChooser1.choose();
+		fightTwo(drAttacker, drVictim);
+		if (!drVictim.isAlive()) {
+			team1.deleteTeamMember(drVictim);
+			Integer numberOfTeaMembers = team1.getCurrentNumberOfTeamMembers();
+			team1.setNumberOfTeamMembers(numberOfTeaMembers);
 		}
+	}
 
 	public void fightTwo(SimpleDroid droidAttacker, SimpleDroid droidVictim) {
 		if (0 == droidAttacker.getEnergy()) {
-			System.out.println("No energy"); // якщо нема енергії він мав би передати хід
+			System.out.println("No energy"); // якщо нема енергії він просто не ходить
 			return;
 		}
 		DroidType attackerType = droidAttacker.getDroidType();
@@ -107,7 +102,7 @@ public class Battle {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;// What is it? : I don't understand what I have done
 																	// with interface in this case???
 			droidCanShoot.shoot(droidVictim);
-		} else { /// ТУТ НЕ ПРАЦЮЄ
+		} else if (DroidType.SIMPLE_REPAIR_DROID.equals(attackerType)) {
 			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstInjuredDroid();
 			// injuredDroid.printInfo();
 			if (null == injuredDroid) {
@@ -116,7 +111,19 @@ public class Battle {
 				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
 				droidCanRepair.repair(injuredDroid);
 			}
+		}else if (DroidType.SIMPLE_CHARGE_DROID.equals(attackerType)) {
+			// переписати длЯ ЕНЕРГЫЪ
+			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstDischargedDroid();
+			// injuredDroid.printInfo();
+			if (null == injuredDroid) {
+				System.out.println("No Discharged droids for Charging");
+			} else {
+				СhargeDroid droidCanCharge = (СhargeDroid) droidAttacker;
+				droidCanCharge.charge(injuredDroid);
+			}
+			
 		}
+		
 
 	}
 

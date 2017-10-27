@@ -1,6 +1,7 @@
 package com.olga.droidsgame.droids;
 
 import com.olga.droidsgame.battle.Team;
+import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.io.DriodInfoDisplayer;
 
 /**
@@ -11,7 +12,6 @@ public abstract class SimpleDroid implements Droid{
 	/**
 	 * Basic health value. It is used to define the MAX_HEALTH for different droids
 	 */
-	public static final Integer BASIC_VALUE = 10;
 	private Integer health;
 	private Integer energy;
 	private Integer maxHealth;

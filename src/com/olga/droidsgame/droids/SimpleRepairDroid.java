@@ -1,15 +1,16 @@
 package com.olga.droidsgame.droids;
 
+import com.olga.droidsgame.constants.DriodConstants;
+import com.olga.droidsgame.constants.DroidType;
+
 /**
  * @author okhytadmin
  *
  */
 public class SimpleRepairDroid extends SimpleDroid implements RepairDroid {
-	private static final Integer maxEnergy = BASIC_VALUE * 2;
-	private static final Integer maxHealth = BASIC_VALUE * 2;
 
 	public SimpleRepairDroid() {
-		super(maxEnergy, maxHealth);
+		super(DriodConstants.MAX_BEGIN_REPAIR_DROID_ENERGY, DriodConstants.MAX_BEGIN_REPAIR_DROID_HEALTH);
 		setDroidType(DroidType.SIMPLE_REPAIR_DROID);
 	}
 

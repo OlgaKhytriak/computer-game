@@ -2,8 +2,8 @@ package com.olga.droidsgame.battle;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.droids.BattleDroid;
-import com.olga.droidsgame.droids.DroidType;
 import com.olga.droidsgame.droids.RepairDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
 import com.olga.droidsgame.io.TeamInfoDisplayer;
@@ -14,6 +14,7 @@ public class Battle {
 	private Integer turn;
 	private TeamInfoDisplayer teamInfo1;
 	private TeamInfoDisplayer teamInfo2;
+	private DroidChooser droidChooser;
 
 	public Battle(Team team1, Team team2) {
 		setTeam1(team1);

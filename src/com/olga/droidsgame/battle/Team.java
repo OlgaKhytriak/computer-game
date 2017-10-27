@@ -15,7 +15,24 @@ public class Team {
 	private ArrayList<SimpleDroid> teamList;
 	private final Keyboard readerFromKeyboard;
 	private String teamName;
+	private DroidChooser droidChooser;
 
+	
+	/**Constructor with number of team's members
+	 * @param numberOfTeamMembers
+	 */
+	public Team(Integer numberOfTeamMembers) { 
+		setNumberOfTeamMembers(numberOfTeamMembers);
+		setTeamList(new ArrayList<SimpleDroid>(numberOfTeamMembers));
+		readerFromKeyboard = new Keyboard();
+		String s = readerFromKeyboard.readStringFromKeyboard("Enter the name of team");
+		setTeamName(s);
+		setDroidChooser(droidChooser);
+	}
+	/** Find the first injured (current health points < max potential heals points) droin in the team.
+	 * @return {@link SimpleDroid} the first injured droid in the team ;
+	 *  Return <b>null</b> if there is no injured droids in the team
+	 */
 	public SimpleDroid findFirstInjuredDroid() {
 		for (SimpleDroid droid : teamList) {
 			if (droid.getHealth() < droid.getMaxHealth()) {
@@ -25,6 +42,9 @@ public class Team {
 		return null;
 	}
 
+	/**
+	 * @return The {@link Integer}  sum of energy of all droids in the current team
+	 */
 	public Integer sumEnergy() {
 		Integer sum = 0;
 		for (SimpleDroid currentDroid : teamList) {
@@ -70,17 +90,7 @@ public class Team {
 		}
 	}
 
-	/**
-	 * @param numberOfTeamMembers
-	 */
-	public Team(Integer numberOfTeamMembers) { // Constructor with number of team's members
-		setNumberOfTeamMembers(numberOfTeamMembers);
-		setTeamList(new ArrayList<SimpleDroid>(numberOfTeamMembers));
-		readerFromKeyboard = new Keyboard();
-		String s = readerFromKeyboard.readStringFromKeyboard("Enter the name of team");
-		setTeamName(s);
-	}
-
+	
 	public Integer getBeginNumberOfTeamMembers() {
 		return beginNumberOfTeamMembers;
 	}
@@ -115,5 +125,11 @@ public class Team {
 
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
+	}
+	public DroidChooser getDroidChooser() {
+		return droidChooser;
+	}
+	public void setDroidChooser(DroidChooser droidChooser) {
+		this.droidChooser = droidChooser;
 	}
 }

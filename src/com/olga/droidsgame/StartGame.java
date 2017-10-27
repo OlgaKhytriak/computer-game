@@ -1,6 +1,7 @@
 package com.olga.droidsgame;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.olga.droidsgame.battle.AlternatelyDroidChooser;
 import com.olga.droidsgame.battle.Battle;
 import com.olga.droidsgame.battle.Team;
 import com.olga.droidsgame.droids.SimpleBattleDroid;
@@ -33,16 +34,20 @@ public class StartGame {
 	 */
 	public static void main(String[] args) {
 		new StartGame().allActions();
+			
 
 	}
 
 	public void allActions() {
 		// testTreatmentBySimpleRepairDroid() ;
 		// testTreatmentBySuperDroid() ;
-		testBattle();
-		SimpleBattleDroid d=new SimpleBattleDroid();
-		DriodInfoDisplayer prt = new DriodInfoDisplayer(d);
-		prt.printEnergyInformation();
+		//testBattle();
+		
+		//SimpleBattleDroid d=new SimpleBattleDroid();
+		//DriodInfoDisplayer prt = new DriodInfoDisplayer(d);
+		//prt.printEnergyInformation();
+		
+		testDroidChoice();
 		
 	}
 
@@ -51,6 +56,7 @@ public class StartGame {
 		int n=reader.readIntegerFromKeyboard("Specify the amount of teams:");
 		Team team1=new Team(n);
 		team1.fillInTeamList();
+		
 		Team team2=new Team(n);
 		team2.fillInTeamList();
 		//team1.printTeamList();
@@ -59,6 +65,15 @@ public class StartGame {
 		//battle.randomNumber();
 		battle.startBattle();
 		
+	}
+	public void testDroidChoice() {
+		Keyboard reader = new Keyboard();
+		int n=reader.readIntegerFromKeyboard("Specify the amount of teams:");
+		Team team1=new Team(n);
+		team1.fillInTeamList();
+		AlternatelyDroidChooser chooser=new AlternatelyDroidChooser(team1);
+		chooser.setDroidJustMadeMove(team1.getTeamList().get(2));
+		chooser.choose(team1);
 	}
 
 	public void testTreatmentBySimpleRepairDroid() {

@@ -3,7 +3,7 @@ package com.olga.droidsgame.droids;
 import com.olga.droidsgame.constants.DriodConstants;
 import com.olga.droidsgame.constants.DroidType;
 
-public class SimpleChargeDroid extends SimpleDroid implements ÑhargeDroid{
+public class SimpleChargeDroid extends SimpleDroid implements ChargeDroid{
 	public SimpleChargeDroid() {
 		super(DriodConstants.MAX_BEGIN_CHARGE_DROID_ENERGY, DriodConstants.MAX_BEGIN_CHARGE_DROID_HEALTH);
 		setDroidType(DroidType.SIMPLE_CHARGE_DROID);

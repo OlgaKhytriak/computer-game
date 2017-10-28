@@ -3,6 +3,8 @@ package com.olga.droidsgame.battle;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.olga.droidsgame.droids.BellicoseDroid;
+import com.olga.droidsgame.droids.ChargeDroid;
 import com.olga.droidsgame.droids.SimpleBattleDroid;
 import com.olga.droidsgame.droids.SimpleChargeDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
@@ -59,14 +61,26 @@ public class Team {
 	/**
 	 * @return The {@link Integer} sum of energy of all droids in the current team
 	 */
-	public Integer sumEnergy() {
+	public Integer sumAllTeamEnergy() {
 		Integer sum = 0;
 		for (SimpleDroid currentDroid : teamList) {
 			sum += currentDroid.getEnergy();
 		}
 		return sum;
 	}
-
+	
+	/**
+	 * @return The {@link Integer} sum of energy of all droids in the current team
+	 */
+	public Integer sumBattleAndChargeTeamEnergy() {
+		Integer sum = 0;
+		for (SimpleDroid currentDroid : teamList) {
+			if ((currentDroid instanceof BellicoseDroid)||(currentDroid instanceof ChargeDroid))
+			sum += currentDroid.getEnergy();
+		}
+		return sum;
+	}
+	
 	public void deleteTeamMember(SimpleDroid droidToDelete) {
 		int indexOfDroidToDelete = teamList.indexOf(droidToDelete);
 		teamList.remove(indexOfDroidToDelete);

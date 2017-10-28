@@ -4,7 +4,7 @@ import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.constants.DriodConstants;
 import com.olga.droidsgame.io.DriodInfoDisplayer;
 
-public class SimpleBattleDroid extends SimpleDroid implements BattleDroid {
+public class SimpleBattleDroid extends SimpleDroid implements BattleDroid, BellicoseDroid {
 	private final DriodInfoDisplayer droidInfo;
 	
 

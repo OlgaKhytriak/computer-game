@@ -1,0 +1,11 @@
+.classpath
+.project
+.settings/
+.metadata/
+RemoteSystemsTempFiles/
+bin/
+desktop.ini
+task.jpg
+*.docx
+libs/
+lib/

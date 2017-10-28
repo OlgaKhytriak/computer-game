@@ -7,21 +7,36 @@ import com.olga.droidsgame.droids.SimpleDroid;
 public class AlternatelyDroidChooser implements DroidChooser {
 	private SimpleDroid droidJustMadeMove;
 	private Team team;
+	int indexOfDroidLastTurnMove;
 
 	public AlternatelyDroidChooser(Team team) {
 		setTeam(team);
 		setDroidJustMadeMove(team.getTeamList().get(0));
+		indexOfDroidLastTurnMove=0;
 	}
 
 	@Override
 	public SimpleDroid choose() {
+		System.out.println("-------");
 		SimpleDroid droid = null;
-		int current = team.getTeamList().indexOf(droidJustMadeMove);
 		int next;
-		next = (current + 1) % (team.getCurrentNumberOfTeamMembers());
+		int current;
+		current = team.getTeamList().indexOf(droidJustMadeMove);
+		
+		if (current>=0) {
+			next = (current + 1) % (team.getCurrentNumberOfTeamMembers());
+		}
+		else if (indexOfDroidLastTurnMove<team.getTeamList().size()){
+			next=indexOfDroidLastTurnMove;
+		}
+		else next=0;
+		System.out.println("Current = "+current);
 		System.out.println(next);
 		droid = team.getTeamList().get(next);
 		setDroidJustMadeMove(droid);
+		indexOfDroidLastTurnMove=next;
+		System.out.println(droid.getDroidType());
+		System.out.println("++++++++++++++");
 		return droid;
 	}
 

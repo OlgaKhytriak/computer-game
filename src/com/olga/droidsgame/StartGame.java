@@ -18,6 +18,7 @@ import org.apache.log4j.Logger;
  */
 public class StartGame {
 	private static final Logger LOG=Logger.getLogger(StartGame.class);
+	//kjbkbdkbkjzb
 	/**
 	 * @param args
 	 */

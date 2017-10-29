@@ -1,6 +1,6 @@
 package com.olga.droidsgame;
 import java.util.concurrent.ThreadLocalRandom;
-
+import org.apache.log4j.Logger;
 import com.olga.droidsgame.battle.AlternatelyDroidChooser;
 import com.olga.droidsgame.battle.Battle;
 import com.olga.droidsgame.battle.RandomDroidChooser;
@@ -16,11 +16,12 @@ import com.olga.droidsgame.io.Keyboard;
  *
  */
 public class StartGame {
-
+	private static final Logger LOG=Logger.getLogger(StartGame.class);
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		LOG.info("START GAME");
 		new StartGame().allActions();
 			
 

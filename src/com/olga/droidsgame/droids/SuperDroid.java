@@ -7,7 +7,7 @@ import com.olga.droidsgame.constants.DroidType;
  * @author okhytadmin
  *
  */
-public class SuperDroid extends SimpleDroid implements RepairDroid, BattleDroid {
+public class SuperDroid extends SimpleDroid implements BellicoseDroid,RepairDroid, BattleDroid {
 	private final SimpleRepairDroid doctor;
 	private final SimpleBattleDroid fighter;
 	

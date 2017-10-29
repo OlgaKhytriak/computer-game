@@ -6,7 +6,7 @@ import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.droids.BattleDroid;
 import com.olga.droidsgame.droids.RepairDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
-import com.olga.droidsgame.droids.ÑhargeDroid;
+import com.olga.droidsgame.droids.ChargeDroid;
 import com.olga.droidsgame.io.TeamInfoDisplayer;
 
 public class Battle {
@@ -32,7 +32,7 @@ public class Battle {
 		System.out.println("-----TURN  ¹  " + turn + "  ------");
 		teamInfo1.printTeamList();
 		teamInfo2.printTeamList();
-		if (0 == team1.sumEnergy() && 0 == team2.sumEnergy()) {
+		if (0 == team1.sumBattleAndChargeTeamEnergy() && 0 == team2.sumBattleAndChargeTeamEnergy()) {
 			System.out.println("Both teams have no energy. ");
 			teamInfo1.printTeamList();
 			teamInfo2.printTeamList();
@@ -42,7 +42,7 @@ public class Battle {
 		while (!team1.getTeamList().isEmpty() && !team2.getTeamList().isEmpty()) {
 			turn++;
 			System.out.println("-----TURN  ¹  " + turn + "  (1->2)------");
-			if (0 == team1.sumEnergy() && 0 == team2.sumEnergy()) {
+			if (0 == team1.sumBattleAndChargeTeamEnergy() && 0 == team2.sumBattleAndChargeTeamEnergy()) {
 				System.out.println("Both teams have no energy");
 				teamInfo1.printTeamList();
 				teamInfo2.printTeamList();
@@ -118,7 +118,7 @@ public class Battle {
 			if (null == injuredDroid) {
 				System.out.println("No Discharged droids for Charging");
 			} else {
-				ÑhargeDroid droidCanCharge = (ÑhargeDroid) droidAttacker;
+				ChargeDroid droidCanCharge = (ChargeDroid) droidAttacker;
 				droidCanCharge.charge(injuredDroid);
 			}
 			

@@ -1,8 +1,7 @@
 package com.olga.droidsgame.battle;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import com.olga.droidsgame.constants.DroidType;
+import com.olga.droidsgame.constants.GeneralProjectConstants;
 import com.olga.droidsgame.droids.BattleDroid;
 import com.olga.droidsgame.droids.ChargeEnergyDroid;
 import com.olga.droidsgame.droids.RepairDroid;
@@ -14,18 +13,21 @@ public class Battle {
 	private Team team1;
 	private Team team2;
 	private Integer turn;
-	private TeamInfoDisplayer teamInfoDisplayer;
 	private DroidChooser droidChooser1;
 	private DroidChooser droidChooser2;
 	private BattleInfoDisplayer battleInfoDisplayer;
 	private Team teamAttacker;
 	private Team teamVictim;
+	private BattleField battleField;
 
-	public Battle(Team team1, Team team2, DroidChooser droidChooser1, DroidChooser droidChooser2) {
-		setTeam1(team1);
-		setTeam2(team2);
-		turn = 0;
-		teamInfoDisplayer = new TeamInfoDisplayer();
+	public Battle() {
+		battleField = new BattleField();
+		setTeam1(battleField.getTeam1());
+		setTeam2(battleField.getTeam2());
+		setTurn(0);
+		droidChooser1 = new RandomDroidChooser(team1);
+		droidChooser2 = new RandomDroidChooser(team2);
+		new TeamInfoDisplayer();
 		battleInfoDisplayer = new BattleInfoDisplayer(this);
 		setDroidChooser1(droidChooser1);
 		setDroidChooser2(droidChooser2);
@@ -33,26 +35,22 @@ public class Battle {
 
 	public void startBattle() {
 		battleInfoDisplayer.displayTurnInformation();
-		int whileController = 100;
+		int whileController = GeneralProjectConstants.WHILE_CONTROLLER;
 		while (!team1.getTeamList().isEmpty() && !team2.getTeamList().isEmpty() && (whileController > 0)) {
 			whileController--;
 			//
-			setTurn(turn + 1);
-			System.out.println("-----TURN  ¹  " + turn + "  (1->2)------");
-			if (ifNOEnergyToFightCharge()) {
+			turnFirstAttackSecond(team1, team2);
+			boolean chargeInfo = ifNOEnergyToFightCharge();
+			if (chargeInfo) {
 				return;
 			}
-			attakTeam1OnTeam2();
-			battleInfoDisplayer.displayBouthTeamsInformation();
 
 			if (!team2.getTeamList().isEmpty()) {
-				setTurn(turn + 1);
-				System.out.println("-----TURN  ¹  " + turn + "  (2->1) ------");
-				if (ifNOEnergyToFightCharge()) {
+				turnSocondAttackFirst(team2, team1);
+				chargeInfo = ifNOEnergyToFightCharge();
+				if (chargeInfo) {
 					return;
 				}
-				attakTeam2OnTeam1();
-				battleInfoDisplayer.displayBouthTeamsInformation();
 			} else {
 				battleInfoDisplayer.dispalayVinnerInfo(team1);
 				return;
@@ -63,13 +61,24 @@ public class Battle {
 		}
 	}
 
-	private boolean turnFirstAttacSecond(Team attackerTeam, Team victimTeam) {
+	private boolean turnFirstAttackSecond(Team attackerTeam, Team victimTeam) {
 		setTurn(turn + 1);
 		System.out.println("-----TURN  ¹  " + turn + "  (1->2)------");
 		if (ifNOEnergyToFightCharge()) {
 			return false;
 		}
 		attakTeam1OnTeam2();
+		battleInfoDisplayer.displayBouthTeamsInformation();
+		return true;
+	}
+
+	private boolean turnSocondAttackFirst(Team attackerTeam, Team victimTeam) {
+		setTurn(turn + 1);
+		System.out.println("-----TURN  ¹  " + turn + "  (2->1)------");
+		if (ifNOEnergyToFightCharge()) {
+			return false;
+		}
+		attakTeam2OnTeam1();
 		battleInfoDisplayer.displayBouthTeamsInformation();
 		return true;
 	}
@@ -122,8 +131,7 @@ public class Battle {
 		DroidType attackerType = droidAttacker.getDroidType();
 		DroidType victimType = droidVictim.getDroidType();
 		if (DroidType.SIMPLE_BATTLE_DROID.equals(attackerType) || DroidType.SUPER_DROID.equals(attackerType)) {
-			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;// What is it? : I don't understand what I have done
-																	// with interface in this case???
+			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
 			droidCanShoot.shoot(droidVictim);
 		} else if (DroidType.SIMPLE_REPAIR_DROID.equals(attackerType)) {
 			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstInjuredDroid();

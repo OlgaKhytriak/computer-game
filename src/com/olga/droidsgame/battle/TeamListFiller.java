@@ -6,17 +6,21 @@ import com.olga.droidsgame.droids.SimpleChargeEnergyDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
 import com.olga.droidsgame.droids.SimpleRepairDroid;
 import com.olga.droidsgame.droids.SuperDroid;
+import com.olga.droidsgame.io.BattleInfoDisplayer;
+import com.olga.droidsgame.io.DriodInfoDisplayer;
 import com.olga.droidsgame.io.Keyboard;
+import com.olga.droidsgame.io.TeamInfoDisplayer;
 
 public class TeamListFiller {
 	private final Keyboard readerFromKeyboard;
-	TeamListFiller(){
+	private TeamInfoDisplayer teamInfoDisplayer;
+	TeamListFiller() {
 		readerFromKeyboard = new Keyboard();
+		teamInfoDisplayer = new TeamInfoDisplayer();
 	}
-	public void fill(Team team) {
-		System.out.println("Team has " + team.getBeginNumberOfTeamMembers() + " members.");
-		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid; 4- ChargeDroid; 5 -BallteDefenderDroid");
 
+	public void fill(Team team) {
+		teamInfoDisplayer.printInfoForTeamFill(team);
 		SimpleDroid currentDroid = null;
 		int i = 0;
 		while (i < team.getBeginNumberOfTeamMembers()) {
@@ -42,7 +46,8 @@ public class TeamListFiller {
 				System.out.println("You enter wrong type of droid ¹ " + i + "Try again");
 				break;
 			}
-			if (typeTeamMember == 5 ||typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3|| typeTeamMember == 4) {
+			if (typeTeamMember == 5 || typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3
+					|| typeTeamMember == 4) {
 				i++;
 				team.getTeamList().add(currentDroid);
 				currentDroid.setMyTeam(team);

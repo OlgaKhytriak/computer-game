@@ -1,7 +1,5 @@
 package com.olga.droidsgame.battle;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import com.olga.droidsgame.droids.SimpleDroid;
 
 public class AlternatelyDroidChooser implements DroidChooser {

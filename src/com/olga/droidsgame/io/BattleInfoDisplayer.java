@@ -6,7 +6,6 @@ import com.olga.droidsgame.battle.Battle;
 import com.olga.droidsgame.battle.Team;
 
 public class BattleInfoDisplayer {
-	// private Battle battle;
 	private static final Logger LOG = Logger.getLogger(BattleInfoDisplayer.class);
 	private TeamInfoDisplayer teamInfo;
 	private Battle battle;
@@ -42,12 +41,12 @@ public class BattleInfoDisplayer {
 	}
 
 	public void dispalayVinnerInfo(Team team1) {
-			LOG.info(String.format("Team %s vin the game",team1.getTeamName()));
+			LOG.info(String.format("Team --  %s  -- !!  VIN !! the game",team1.getTeamName()));
 			
 	}
 
 	public void dispalayDeadHaetInfo() {
-		LOG.info("!!!   Dead heat  !!!!!");
+		LOG.info("!!!   Dead heat  !!!");
 		
 		
 	}

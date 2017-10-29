@@ -20,5 +20,7 @@ public class DriodConstants {
 	public static final Integer MAX_BEGIN_CHARGE_DROID_ENERGY = BASIC_VALUE * COEFICIENT_CHARGE_DROID;
 	public static final Integer MAX_BEGIN_CHARGE_DROID_HEALTH = BASIC_VALUE * COEFICIENT_CHARGE_DROID;
 	
+	
+	
 	private DriodConstants() {}
 }

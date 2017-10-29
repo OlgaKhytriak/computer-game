@@ -16,6 +16,7 @@ public class StartGame {
 	public static void main(String[] args) {
 		LOG.info("START GAME");
 		new StartGame().allActions();
+		LOG.info("GAME OVER");
 	}
 
 	public void allActions() {

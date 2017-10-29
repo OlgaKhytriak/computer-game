@@ -4,14 +4,15 @@ import org.apache.log4j.Logger;
 
 import com.olga.droidsgame.droids.SimpleDroid;
 
-public class DriodInfoDisplayer { /// +++
+public class DriodInfoDisplayer { 
 	private static final Logger LOG = Logger.getLogger(DriodInfoDisplayer.class);
 
 	public DriodInfoDisplayer() {
 	}
 
 	public void printAllInformation(SimpleDroid droid) {
-		LOG.info(String.format("Droid type: %s ; health= %s; energy= %s", droid.getDroidType(), droid.getHealth(),
+		
+		LOG.info(String.format("%s (health= %s; energy= %s)", droid.toString(), droid.getHealth(),
 				droid.getEnergy()));
 	}
 

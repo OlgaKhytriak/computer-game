@@ -2,6 +2,7 @@ package com.olga.droidsgame.battle;
 
 import java.util.ArrayList;
 import com.olga.droidsgame.droids.BellicoseDroid;
+import com.olga.droidsgame.droids.ChargeEnergyDroid;
 import com.olga.droidsgame.droids.SimpleChargeEnergyDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
 import com.olga.droidsgame.io.Keyboard;
@@ -68,7 +69,7 @@ public class Team {
 	public Integer sumBattleAndChargeTeamEnergy() {
 		Integer sum = 0;
 		for (SimpleDroid currentDroid : teamList) {
-			if ((currentDroid instanceof BellicoseDroid) || (currentDroid instanceof SimpleChargeEnergyDroid))
+			if ((currentDroid instanceof BellicoseDroid) || (currentDroid instanceof ChargeEnergyDroid))
 				sum += currentDroid.getEnergy();
 		}
 		return sum;

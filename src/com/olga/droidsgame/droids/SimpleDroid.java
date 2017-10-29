@@ -17,14 +17,17 @@ public abstract class SimpleDroid implements Droid{
 	private Integer maxHealth;
 	private Integer maxEnergy;
 	private Integer maxPower;
-	private DroidType droidType;
 	private Team myTeam;
 	
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
 	protected SimpleDroid(Integer maxEnergy,Integer maxHealth) {
 		setMaxHealth(maxEnergy);
 		setMaxEnergy(maxHealth);
 		setEnergy(maxEnergy);
 		setHealth(maxHealth);
+		
 	}
 	public boolean isAlive() {
 		return !(0==health);
@@ -70,15 +73,7 @@ public abstract class SimpleDroid implements Droid{
 		this.maxPower = maxPower;
 	}
 
-	public DroidType getDroidType() {
-		return droidType;
-	}
-
-	public void setDroidType(DroidType droidtype) {
-		this.droidType = droidtype;
-	}
-
-	public Team getMyTeam() {
+		public Team getMyTeam() {
 		return myTeam;
 	}
 

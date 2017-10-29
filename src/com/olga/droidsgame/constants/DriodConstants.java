@@ -6,6 +6,12 @@ public class DriodConstants {
 	public static final Integer COEFICIENT_REPAIR_DROID=2;
 	public static final Integer COEFICIENT_SUPER_DROID=4;
 	public static final Integer COEFICIENT_CHARGE_DROID=1;
+	public static final Integer COEFICIENT_SUPER_DOCTOR=1;
+	public static final Integer COEFICIENT_BATTLE_LAZER_DROID=4;
+	public static final Integer COEFICIENT_DEFENDER_DROID=1;
+	public static final Integer COEFICIENT_DEFENDER_REPAIR=3;
+	public static final Integer COEFICIENT_DROIDEKA_DROID=5;
+	public static final Integer COEFICIENT_SUPER_POWERFULL_DROID=5;
 	
 	public static final Integer MAX_BEGIN_BATTLE_DROID_ENERGY = BASIC_VALUE * COEFICIENT_BATTLE_DROID;
 	public static final Integer MAX_BEGIN_BATTLE_DROID_HEALTH = BASIC_VALUE * COEFICIENT_BATTLE_DROID;

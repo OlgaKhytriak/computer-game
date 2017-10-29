@@ -41,7 +41,8 @@ public class BattleInfoDisplayer {
 	}
 
 	public void dispalayVinnerInfo(Team team1) {
-			LOG.info(String.format("Team --  %s  -- !!  VIN !! the game",team1.getTeamName()));
+			LOG.info(String.format("Team -- [ %s ] -- !!  VIN !! the game",team1.getTeamName()));
+		
 			
 	}
 

@@ -1,15 +1,12 @@
 package com.olga.droidsgame.droids;
 
-import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.constants.DriodConstants;
 import com.olga.droidsgame.io.DriodInfoDisplayer;
 
 public class SimpleBattleDroid extends SimpleDroid implements BattleDroid, BellicoseDroid {
 
-
 	public SimpleBattleDroid() {
 		super(DriodConstants.MAX_BEGIN_BATTLE_DROID_ENERGY, DriodConstants.MAX_BEGIN_BATTLE_DROID_HEALTH);
-		setDroidType(DroidType.SIMPLE_BATTLE_DROID);
 	}
 
 	@Override
@@ -25,6 +22,6 @@ public class SimpleBattleDroid extends SimpleDroid implements BattleDroid, Belli
 		}
 		enemyDroid.setHealth(enemyDroidHealth);
 		setEnergy(energy);
-			}
+	}
 
 }

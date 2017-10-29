@@ -1,8 +1,11 @@
 package com.olga.droidsgame.battle;
 
-import com.olga.droidsgame.constants.DroidType;
+import org.apache.log4j.Logger;
+
+import com.olga.droidsgame.StartGame;
 import com.olga.droidsgame.constants.GeneralProjectConstants;
 import com.olga.droidsgame.droids.BattleDroid;
+import com.olga.droidsgame.droids.BellicoseDroid;
 import com.olga.droidsgame.droids.ChargeEnergyDroid;
 import com.olga.droidsgame.droids.RepairDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
@@ -19,6 +22,7 @@ public class Battle {
 	private Team teamAttacker;
 	private Team teamVictim;
 	private BattleField battleField;
+	private static final Logger LOG = Logger.getLogger(Battle.class);
 
 	public Battle() {
 		battleField = new BattleField();
@@ -44,7 +48,6 @@ public class Battle {
 			if (chargeInfo) {
 				return;
 			}
-
 			if (!team2.getTeamList().isEmpty()) {
 				turnSocondAttackFirst(team2, team1);
 				chargeInfo = ifNOEnergyToFightCharge();
@@ -63,7 +66,7 @@ public class Battle {
 
 	private boolean turnFirstAttackSecond(Team attackerTeam, Team victimTeam) {
 		setTurn(turn + 1);
-		System.out.println("-----TURN  №  " + turn + "  (1->2)------");
+		LOG.info("-----TURN  №  " + turn + "  (1->2)------");
 		if (ifNOEnergyToFightCharge()) {
 			return false;
 		}
@@ -74,7 +77,7 @@ public class Battle {
 
 	private boolean turnSocondAttackFirst(Team attackerTeam, Team victimTeam) {
 		setTurn(turn + 1);
-		System.out.println("-----TURN  №  " + turn + "  (2->1)------");
+		LOG.info("-----TURN  №  " + turn + "  (2->1)------");
 		if (ifNOEnergyToFightCharge()) {
 			return false;
 		}
@@ -125,19 +128,16 @@ public class Battle {
 
 	public void fightTwo(SimpleDroid droidAttacker, SimpleDroid droidVictim) {
 		if (0 == droidAttacker.getEnergy()) {
-			System.out.println("No energy"); // якщо нема енергії він просто не ходить
+			LOG.info("No energy"); 
 			return;
 		}
-		DroidType attackerType = droidAttacker.getDroidType();
-		DroidType victimType = droidVictim.getDroidType();
-		if (DroidType.SIMPLE_BATTLE_DROID.equals(attackerType) || DroidType.SUPER_DROID.equals(attackerType)) {
+		if (droidAttacker instanceof BellicoseDroid)  {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
 			droidCanShoot.shoot(droidVictim);
-		} else if (DroidType.SIMPLE_REPAIR_DROID.equals(attackerType)) {
+		} else if (droidAttacker instanceof RepairDroid) {
 			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstInjuredDroid();
-			// injuredDroid.printInfo();
 			if (null == injuredDroid) {
-				System.out.println("No injured droids for repairing");
+				LOG.info("No injured droids for repairing.");
 			} else {
 				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
 				droidCanRepair.repair(injuredDroid);
@@ -145,7 +145,7 @@ public class Battle {
 		} else if (droidAttacker instanceof ChargeEnergyDroid) {
 			SimpleDroid dischargedDroid = droidAttacker.getMyTeam().findFirstDischargedDroid();
 			if (null == dischargedDroid) {
-				System.out.println("No discharged droid in the team");
+				LOG.info("No discharged droid in the team");
 			} else {
 				ChargeEnergyDroid droidCanCharge = (ChargeEnergyDroid) droidAttacker;
 				droidCanCharge.charge(dischargedDroid);

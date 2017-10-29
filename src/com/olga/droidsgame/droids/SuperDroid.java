@@ -1,7 +1,6 @@
 package com.olga.droidsgame.droids;
 
 import com.olga.droidsgame.constants.DriodConstants;
-import com.olga.droidsgame.constants.DroidType;
 
 /**
  * @author okhytadmin
@@ -13,7 +12,6 @@ public class SuperDroid extends SimpleDroid implements RepairDroid, BattleDroid,
 	
 	public SuperDroid() {
 		super(DriodConstants.MAX_BEGIN_SUPER_DROID_ENERGY, DriodConstants.MAX_BEGIN_SUPER_DROID_HEALTH);
-		setDroidType(DroidType.SUPER_DROID);
 		doctor = new SimpleRepairDroid();
 		fighter = new SimpleBattleDroid();
 	}

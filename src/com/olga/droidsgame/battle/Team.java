@@ -24,7 +24,7 @@ public class Team {
 		readerFromKeyboard = new Keyboard();
 		String s = readerFromKeyboard.readStringFromKeyboard("Enter the name of team");
 		setTeamName(s);
-		teamListFiller= new TeamListFiller();
+		teamListFiller = new TeamListFiller();
 		teamListFiller.fill(this);
 
 	}
@@ -44,7 +44,7 @@ public class Team {
 		}
 		return null;
 	}
-	
+
 	public SimpleDroid findFirstDischargedDroid() {
 		for (SimpleDroid droid : teamList) {
 			if (droid.getEnergy() < droid.getMaxEnergy()) {
@@ -64,20 +64,20 @@ public class Team {
 		}
 		return sum;
 	}
+
 	public Integer sumBattleAndChargeTeamEnergy() {
 		Integer sum = 0;
 		for (SimpleDroid currentDroid : teamList) {
-			if ((currentDroid instanceof BellicoseDroid)||(currentDroid instanceof SimpleChargeEnergyDroid))
-			sum += currentDroid.getEnergy();
+			if ((currentDroid instanceof BellicoseDroid) || (currentDroid instanceof SimpleChargeEnergyDroid))
+				sum += currentDroid.getEnergy();
 		}
 		return sum;
-}
+	}
+
 	public void deleteTeamMember(SimpleDroid droidToDelete) {
 		int indexOfDroidToDelete = teamList.indexOf(droidToDelete);
 		teamList.remove(indexOfDroidToDelete);
 	}
-
-	
 
 	public Integer getBeginNumberOfTeamMembers() {
 		return beginNumberOfTeamMembers;

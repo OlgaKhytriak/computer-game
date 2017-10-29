@@ -46,14 +46,8 @@ public class StartGame {
 		Keyboard reader = new Keyboard();
 		int n=reader.readIntegerFromKeyboard("Specify the amount of teams:");
 		Team team1=new Team(n);
-		team1.fillInTeamList();
-		
 		Team team2=new Team(n);
-		team2.fillInTeamList();
-		//team1.printTeamList();
-		//team2.printTeamList();
 		Battle battle=new Battle(team1, team2,new RandomDroidChooser(team1),new AlternatelyDroidChooser(team2));
-		//battle.randomNumber();
 		battle.startBattle();
 		
 	}
@@ -61,7 +55,6 @@ public class StartGame {
 		Keyboard reader = new Keyboard();
 		int n=reader.readIntegerFromKeyboard("Specify the amount of teams:");
 		Team team3=new Team(n);
-		team3.fillInTeamList();
 		AlternatelyDroidChooser chooser=new AlternatelyDroidChooser(team3);
 		chooser.setDroidJustMadeMove(team3.getTeamList().get(2));
 		chooser.choose();

@@ -3,10 +3,10 @@ package com.olga.droidsgame.battle;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.olga.droidsgame.droids.DefenderBattleDroid;
 import com.olga.droidsgame.droids.BellicoseDroid;
-import com.olga.droidsgame.droids.ChargeDroid;
 import com.olga.droidsgame.droids.SimpleBattleDroid;
-import com.olga.droidsgame.droids.SimpleChargeDroid;
+import com.olga.droidsgame.droids.SimpleChargeEnergyDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
 import com.olga.droidsgame.droids.SimpleRepairDroid;
 import com.olga.droidsgame.droids.SuperDroid;
@@ -68,16 +68,14 @@ public class Team {
 		}
 		return sum;
 	}
-	
 	public Integer sumBattleAndChargeTeamEnergy() {
 		Integer sum = 0;
 		for (SimpleDroid currentDroid : teamList) {
-			if ((currentDroid instanceof BellicoseDroid)||(currentDroid instanceof ChargeDroid))
+			if ((currentDroid instanceof BellicoseDroid)||(currentDroid instanceof SimpleChargeEnergyDroid))
 			sum += currentDroid.getEnergy();
 		}
 		return sum;
 }
-
 	public void deleteTeamMember(SimpleDroid droidToDelete) {
 		int indexOfDroidToDelete = teamList.indexOf(droidToDelete);
 		teamList.remove(indexOfDroidToDelete);
@@ -85,7 +83,7 @@ public class Team {
 
 	public void fillInTeamList() {
 		System.out.println("Team has " + beginNumberOfTeamMembers + " members.");
-		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid; 4- ChargeDroid");
+		System.out.println("Chois types of drids: 1- RepairDroid; 2- BattleDroid; 3- SuperDroid; 4- ChargeDroid; 5 -BallteDefenderDroid");
 
 		SimpleDroid currentDroid = null;
 		int i = 0;
@@ -103,13 +101,16 @@ public class Team {
 				currentDroid = new SuperDroid();
 				break;
 			case 4:
-				currentDroid = new SimpleChargeDroid();
+				currentDroid = new SimpleChargeEnergyDroid();
+				break;
+			case 5:
+				currentDroid = new DefenderBattleDroid();
 				break;
 			default:
 				System.out.println("You enter wrong type of droid ¹ " + i + "Try again");
 				break;
 			}
-			if (typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3|| typeTeamMember == 4) {
+			if (typeTeamMember == 5 ||typeTeamMember == 1 || typeTeamMember == 2 || typeTeamMember == 3|| typeTeamMember == 4) {
 				i++;
 				teamList.add(currentDroid);
 				currentDroid.setMyTeam(this);

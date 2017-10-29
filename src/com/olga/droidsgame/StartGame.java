@@ -1,6 +1,6 @@
 package com.olga.droidsgame;
 import java.util.concurrent.ThreadLocalRandom;
-import org.apache.log4j.Logger;
+
 import com.olga.droidsgame.battle.AlternatelyDroidChooser;
 import com.olga.droidsgame.battle.Battle;
 import com.olga.droidsgame.battle.RandomDroidChooser;
@@ -10,6 +10,7 @@ import com.olga.droidsgame.droids.SimpleRepairDroid;
 import com.olga.droidsgame.droids.SuperDroid;
 import com.olga.droidsgame.io.DriodInfoDisplayer;
 import com.olga.droidsgame.io.Keyboard;
+import org.apache.log4j.Logger;
 
 /**
  * @author okhytadmin

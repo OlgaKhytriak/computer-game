@@ -6,7 +6,7 @@ import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.droids.BattleDroid;
 import com.olga.droidsgame.droids.RepairDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
-import com.olga.droidsgame.droids.ChargeDroid;
+import com.olga.droidsgame.droids.ChargeEnergyDroid;
 import com.olga.droidsgame.io.TeamInfoDisplayer;
 
 public class Battle {
@@ -104,26 +104,22 @@ public class Battle {
 			droidCanShoot.shoot(droidVictim);
 		} else if (DroidType.SIMPLE_REPAIR_DROID.equals(attackerType)) {
 			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstInjuredDroid();
-			// injuredDroid.printInfo();
 			if (null == injuredDroid) {
 				System.out.println("No injured droids for repairing");
 			} else {
 				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
 				droidCanRepair.repair(injuredDroid);
 			}
-		}else if (DroidType.SIMPLE_CHARGE_DROID.equals(attackerType)) {
-			// переписати длЯ ЕНЕРГЫЪ
-			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstDischargedDroid();
-			// injuredDroid.printInfo();
-			if (null == injuredDroid) {
-				System.out.println("No Discharged droids for Charging");
+		} else if (droidAttacker instanceof ChargeEnergyDroid) {
+			SimpleDroid dischargedDroid = droidAttacker.getMyTeam().findFirstDischargedDroid();
+			if (null == dischargedDroid) {
+				System.out.println("No discharged droid in the team");
 			} else {
-				ChargeDroid droidCanCharge = (ChargeDroid) droidAttacker;
-				droidCanCharge.charge(injuredDroid);
+				ChargeEnergyDroid droidCanCharge = (ChargeEnergyDroid) droidAttacker;
+				droidCanCharge.charge(dischargedDroid);
 			}
-			
+
 		}
-		
 
 	}
 

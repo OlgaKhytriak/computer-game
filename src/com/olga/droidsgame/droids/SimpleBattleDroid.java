@@ -4,7 +4,7 @@ import com.olga.droidsgame.constants.DroidType;
 import com.olga.droidsgame.constants.DriodConstants;
 import com.olga.droidsgame.io.DriodInfoDisplayer;
 
-public class SimpleBattleDroid extends SimpleDroid implements BellicoseDroid, BattleDroid {
+public class SimpleBattleDroid extends SimpleDroid implements BattleDroid,BellicoseDroid {
 	private final DriodInfoDisplayer droidInfo;
 	
 
@@ -17,11 +17,15 @@ public class SimpleBattleDroid extends SimpleDroid implements BellicoseDroid, Ba
 	@Override
 	public void shoot(SimpleDroid enemyDroid) {
 		Integer enemyDroidHealth = enemyDroid.getHealth();
+		if ((enemyDroid instanceof DefenderDroid)) {
+			((DefenderDroid) enemyDroid).defenceItself(this);
+		}
 		Integer energy = getEnergy();
 		while ((enemyDroidHealth > 0) && (energy > 0)) {// ALL energy is used to reduce heals points.
 			enemyDroidHealth--;
 			energy--;
 		}
+		
 		enemyDroid.setHealth(enemyDroidHealth);
 		setEnergy(energy);
 		droidInfo.printEnergyInformation();

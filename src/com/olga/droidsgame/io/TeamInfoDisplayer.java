@@ -22,7 +22,7 @@ public class TeamInfoDisplayer {
 
 	public void printTeamList(Team team) {
 		if (team.getTeamList().isEmpty()) {
-			System.out.println("The team is empty");
+			LOG.info("The team is empty");
 		}
 		System.out.println(team.getTeamName());
 		int i = 0;

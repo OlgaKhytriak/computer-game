@@ -1,5 +1,5 @@
 package com.olga.droidsgame.droids;
 
-public interface BellicoseDroid {
+public interface BellicoseDroid extends BattleDroid{
 
 }

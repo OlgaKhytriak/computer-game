@@ -1,18 +1,23 @@
 package com.olga.droidsgame.io;
 
 import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
+import com.olga.droidsgame.StartGame;
 /** Ñlass for reading from a keyboard different types of data
  * @author Olga Khytriak
  * @version 1.0 
   */
 public class Keyboard {
+	private static final Logger LOG = Logger.getLogger(Keyboard.class);
 	/** Reads string from keyboard and return it
 	 * @param message
 	 *   will be written on the console before user starts to input data   
 	 * @return
 	 */
 	public String readStringFromKeyboard(String message) {
-		System.out.println(String.format("%s  ", message));
+		LOG.info(String.format("%s  ", message));
 		Scanner scan = new Scanner(System.in);
 		return scan.next();
 	}

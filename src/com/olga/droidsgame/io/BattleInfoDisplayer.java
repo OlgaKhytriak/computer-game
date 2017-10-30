@@ -22,8 +22,7 @@ public class BattleInfoDisplayer {
 
 	public void displayTurnInformation() {
 		Integer turn = battle.getTurn();
-		String message=String.format(" --- TURN ----- ¹ %s", turn);
-		LOG.info(message);
+		LOG.info(String.format(" --- TURN ----- ¹ %s", turn));
 		displayBouthTeamsInformation();
 	}
 	public void displayNoEnergy() {

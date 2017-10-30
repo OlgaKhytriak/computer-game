@@ -3,8 +3,7 @@ package com.olga.droidsgame.droids;
 import com.olga.droidsgame.constants.DriodConstants;
 
 public class BattleLazerDroid extends SimpleBattleDroid implements BellicoseDroid{
-// Сильний напад. Подвоює енергію нападу
-	
+
 	private final SimpleBattleDroid fighter;
 	
 	public BattleLazerDroid() {

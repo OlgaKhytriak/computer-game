@@ -1,16 +1,25 @@
 package com.olga.droidsgame.droids;
 
-public class DefenderRepairDroid extends SimpleRepairDroid implements RepairDroid, DefenderDroid{
+import com.olga.droidsgame.constants.DriodConstants;
 
-	@Override
+public class DefenderRepairDroid extends SimpleRepairDroid implements RepairDroid, DefenderDroid{
+	DefenderRepairDroid(){
+		setBasicParameters();
+	}
 	
-	public void defenceItself(SimpleDroid droidAttacker) {
+	@Override
+		public void defenceItself(SimpleDroid droidAttacker) {
 		absorbEnergy(droidAttacker);
 		droidAttacker.setEnergy(0);		
 	}
 	private void absorbEnergy(SimpleDroid droidAttacker) {
 		setEnergy(getEnergy()+droidAttacker.getEnergy());
 	}
-// поглинає  всю енергію того хто в нього стріляв і додає її до очків своїє енергії. 
-	//Не вміє битися але вміє лікувати
+	private void setBasicParameters() {
+		setMaxEnergy(DriodConstants.MAX_BEGIN_DEFENDER_REPAIR_DROID_ENERGY);
+		setMaxHealth(DriodConstants.MAX_BEGIN_DEFENDER_REPAIR_DROID_HEALTH);
+		setEnergy(DriodConstants.MAX_BEGIN_DEFENDER_REPAIR_DROID_ENERGY);
+		setHealth(DriodConstants.MAX_BEGIN_DEFENDER_REPAIR_DROID_HEALTH);
+	}
+
 }

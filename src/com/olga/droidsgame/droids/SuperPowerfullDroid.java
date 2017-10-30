@@ -1,10 +1,13 @@
 package com.olga.droidsgame.droids;
 
+import com.olga.droidsgame.constants.DriodConstants;
+
 public class SuperPowerfullDroid extends SuperDroid implements BellicoseDroid,DefenderDroid,RepairDroid,ChargeEnergyDroid{
 	
 	private final SimpleChargeEnergyDroid charger;
 	public SuperPowerfullDroid(){
 		charger=new SimpleChargeEnergyDroid();
+		setBasicParameters();
 	}
 
 	@Override
@@ -19,5 +22,11 @@ public class SuperPowerfullDroid extends SuperDroid implements BellicoseDroid,De
 		Integer attackerEnergy=droidAttacker.getEnergy();
 		droidAttacker.setEnergy(0);	
 		
+	}
+	private void setBasicParameters() {
+		setMaxEnergy(DriodConstants.MAX_BEGIN_SUPER_POWERFULL_DROID_ENERGY);
+		setMaxHealth(DriodConstants.MAX_BEGIN_SUPER_POWERFULL_DROID_HEALTH);
+		setEnergy(DriodConstants.MAX_BEGIN_SUPER_POWERFULL_DROID_ENERGY);
+		setHealth(DriodConstants.MAX_BEGIN_SUPER_POWERFULL_DROID_HEALTH);
 	}
 }

@@ -133,8 +133,8 @@ public class Battle {
 		}
 		if (droidAttacker instanceof BellicoseDroid)  {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
-			droidCanShoot.shoot(droidVictim);
-		} else if (droidAttacker instanceof RepairDroid) {
+			droidCanShoot.shoot(droidVictim);}
+		if (droidAttacker instanceof RepairDroid) {
 			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstInjuredDroid();
 			if (null == injuredDroid) {
 				LOG.info("No injured droids for repairing.");
@@ -142,7 +142,8 @@ public class Battle {
 				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
 				droidCanRepair.repair(injuredDroid);
 			}
-		} else if (droidAttacker instanceof ChargeEnergyDroid) {
+		} 
+		if (droidAttacker instanceof ChargeEnergyDroid) {
 			SimpleDroid dischargedDroid = droidAttacker.getMyTeam().findFirstDischargedDroid();
 			if (null == dischargedDroid) {
 				LOG.info("No discharged droid in the team");
@@ -150,9 +151,7 @@ public class Battle {
 				ChargeEnergyDroid droidCanCharge = (ChargeEnergyDroid) droidAttacker;
 				droidCanCharge.charge(dischargedDroid);
 			}
-
 		}
-
 	}
 
 	public Team getTeam1() {

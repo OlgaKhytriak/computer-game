@@ -2,6 +2,7 @@ package com.olga.droidsgame.battle;
 
 import org.apache.log4j.Logger;
 
+import com.olga.droidsgame.droids.BattleLazerDroid;
 import com.olga.droidsgame.droids.DefenderBattleDroid;
 import com.olga.droidsgame.droids.DefenderRepairDroid;
 import com.olga.droidsgame.droids.Droideka;
@@ -59,11 +60,14 @@ public class TeamListFiller {
 			case 9:
 				currentDroid = new SuperPowerfullDroid();
 				break;
+			case 10:
+				currentDroid = new BattleLazerDroid();
+				break;
 			default:
 				LOG.info((String.format("You enter wrong type of droid ¹ [%s].  !! Try again: ",i)));
 				break;
 			}
-			if ((0<typeTeamMember)&&(typeTeamMember<10)) {
+			if ((0<typeTeamMember)&&(typeTeamMember<11)) {
 				i++;
 				team.getTeamList().add(currentDroid);
 				currentDroid.setMyTeam(team);

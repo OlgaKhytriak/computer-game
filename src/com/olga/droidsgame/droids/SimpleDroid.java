@@ -19,16 +19,16 @@ public abstract class SimpleDroid implements Droid{
 	private Integer maxPower;
 	private Team myTeam;
 	
-	public String toString() {
-		return this.getClass().getSimpleName();
-	}
 	protected SimpleDroid(Integer maxEnergy,Integer maxHealth) {
 		setMaxHealth(maxEnergy);
 		setMaxEnergy(maxHealth);
 		setEnergy(maxEnergy);
 		setHealth(maxHealth);
-		
 	}
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
+	
 	public boolean isAlive() {
 		return !(0==health);
 	}

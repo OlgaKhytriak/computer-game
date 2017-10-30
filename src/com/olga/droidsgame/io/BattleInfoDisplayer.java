@@ -15,6 +15,7 @@ public class BattleInfoDisplayer {
 		teamInfo = new TeamInfoDisplayer();
 	}
 
+	
 	public void displayBouthTeamsInformation() {
 		teamInfo.printTeamList(battle.getTeam1());
 		teamInfo.printTeamList(battle.getTeam2());

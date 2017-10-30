@@ -21,19 +21,46 @@ public class Battle {
 	private Team teamAttacker;
 	private Team teamVictim;
 	private BattleField battleField;
+	private StrategyChooser strategyChooser;
 	private static final Logger LOG = Logger.getLogger(Battle.class);
 
 	public Battle() {
+		strategyChooser = new StrategyChooser(this);
 		battleField = new BattleField();
 		setTeam1(battleField.getTeam1());
 		setTeam2(battleField.getTeam2());
 		setTurn(0);
-		droidChooser1 = new RandomDroidChooser(team1);
-		droidChooser2 = new RandomDroidChooser(team2);
 		new TeamInfoDisplayer();
 		battleInfoDisplayer = new BattleInfoDisplayer(this);
+		chooseStrategies();
 		setDroidChooser1(droidChooser1);
 		setDroidChooser2(droidChooser2);
+	}
+
+	public void chooseStrategies() {
+
+		int indexStrategyTeam1 = strategyChooser.chooseStrategy(team1);
+
+		if (1 == indexStrategyTeam1) {
+			droidChooser1 = new RandomDroidChooser(team1);
+		} else if (2 == indexStrategyTeam1) {
+			droidChooser1 = new AlternatelyDroidChooser(team1);
+		} else {
+			LOG.error("Incorrect number of strategy. Try again.");
+			chooseStrategies();
+			return;
+		}
+		int indexStrategyTeam2 = strategyChooser.chooseStrategy(team2);
+		if (1 == indexStrategyTeam2) {
+			droidChooser2 = new RandomDroidChooser(team2);
+		} else if (2 == indexStrategyTeam2) {
+			droidChooser2 = new AlternatelyDroidChooser(team2);
+		} else {
+			LOG.error("Incorrect number of strategy. Try again.");
+			chooseStrategies();
+			return;
+		}
+
 	}
 
 	public void startBattle() {
@@ -127,12 +154,13 @@ public class Battle {
 
 	public void fightTwo(SimpleDroid droidAttacker, SimpleDroid droidVictim) {
 		if (0 == droidAttacker.getEnergy()) {
-			LOG.info("No energy"); 
+			LOG.info("No energy");
 			return;
 		}
-		if (droidAttacker instanceof BattleDroid)  {
+		if (droidAttacker instanceof BattleDroid) {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
-			droidCanShoot.shoot(droidVictim);}
+			droidCanShoot.shoot(droidVictim);
+		}
 		if (droidAttacker instanceof RepairDroid) {
 			SimpleDroid injuredDroid = droidAttacker.getMyTeam().findFirstInjuredDroid();
 			if (null == injuredDroid) {
@@ -141,7 +169,7 @@ public class Battle {
 				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
 				droidCanRepair.repair(injuredDroid);
 			}
-		} 
+		}
 		if (droidAttacker instanceof ChargeEnergyDroid) {
 			SimpleDroid dischargedDroid = droidAttacker.getMyTeam().findFirstDischargedDroid();
 			if (null == dischargedDroid) {

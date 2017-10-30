@@ -22,9 +22,9 @@ public class TeamInfoDisplayer {
 
 	public void printTeamList(Team team) {
 		if (team.getTeamList().isEmpty()) {
-			LOG.info("The team is empty");
+			LOG.info(String.format("The team [ %s ] is empty", team.getTeamName()));
 		}
-		System.out.println(team.getTeamName());
+		LOG.info (team.getTeamName());
 		int i = 0;
 		for (SimpleDroid currentDroid : team.getTeamList()) {
 			i++;

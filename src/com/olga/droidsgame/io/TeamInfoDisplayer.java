@@ -24,7 +24,7 @@ public class TeamInfoDisplayer {
 		if (team.getTeamList().isEmpty()) {
 			LOG.info(String.format("The team [ %s ] is empty", team.getTeamName()));
 		}
-		LOG.info (team.getTeamName());
+		LOG.info(String.format("[ %s ]",team.getTeamName()) );
 		int i = 0;
 		for (SimpleDroid currentDroid : team.getTeamList()) {
 			i++;

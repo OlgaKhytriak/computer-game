@@ -55,6 +55,14 @@ public class Team {
 		}
 		return null;
 	}
+	public boolean isBattleDroidTeam() {
+		for (SimpleDroid droid : teamList) {
+			if (droid instanceof BattleDroid) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * @return The {@link Integer} sum of energy of all droids in the current team

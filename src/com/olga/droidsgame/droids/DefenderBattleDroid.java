@@ -2,7 +2,7 @@ package com.olga.droidsgame.droids;
 
 import com.olga.droidsgame.constants.DriodConstants;
 
-public class DefenderBattleDroid extends SimpleBattleDroid implements DefenderDroid, BattleDroid {
+public class DefenderBattleDroid extends SimpleBattleDroid implements DefenderDroid {
 	
 	public DefenderBattleDroid() {
 		setBasicParameters();

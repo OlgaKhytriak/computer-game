@@ -68,7 +68,10 @@ public class Battle {
 		int whileController = GeneralProjectConstants.WHILE_CONTROLLER;
 		while (!team1.getTeamList().isEmpty() && !team2.getTeamList().isEmpty() && (whileController > 0)) {
 			whileController--;
-			//
+			if (!team1.isBattleDroidTeam() || !team2.isBattleDroidTeam()) {
+				LOG.info("No Battle droid in both teams");
+				return;
+			}
 			turnFirstAttackSecond(team1, team2);
 			boolean chargeInfo = ifNOEnergyToFightCharge();
 			if (chargeInfo) {
@@ -88,6 +91,7 @@ public class Battle {
 		if (team1.getTeamList().isEmpty()) {
 			battleInfoDisplayer.dispalayVinnerInfo(team2);
 		}
+
 	}
 
 	private boolean turnFirstAttackSecond(Team attackerTeam, Team victimTeam) {
@@ -153,12 +157,14 @@ public class Battle {
 	}
 
 	public void fightTwo(SimpleDroid droidAttacker, SimpleDroid droidVictim) {
+		LOG.info(String.format("%s is moving", droidAttacker.toString()));
 		if (0 == droidAttacker.getEnergy()) {
 			LOG.info("No energy");
 			return;
 		}
 		if (droidAttacker instanceof BattleDroid) {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
+			LOG.info(String.format("%s is victim", droidVictim.toString()));
 			droidCanShoot.shoot(droidVictim);
 		}
 		if (droidAttacker instanceof RepairDroid) {
@@ -167,6 +173,7 @@ public class Battle {
 				LOG.info("No injured droids for repairing.");
 			} else {
 				RepairDroid droidCanRepair = (RepairDroid) droidAttacker;
+				LOG.info(String.format("%s will be repaired", injuredDroid.toString()));
 				droidCanRepair.repair(injuredDroid);
 			}
 		}
@@ -176,6 +183,7 @@ public class Battle {
 				LOG.info("No discharged droid in the team");
 			} else {
 				ChargeEnergyDroid droidCanCharge = (ChargeEnergyDroid) droidAttacker;
+				LOG.info(String.format("%s will be charged", dischargedDroid.toString()));
 				droidCanCharge.charge(dischargedDroid);
 			}
 		}

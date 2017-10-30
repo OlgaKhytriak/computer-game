@@ -2,7 +2,7 @@ package com.olga.droidsgame.droids;
 
 import com.olga.droidsgame.constants.DriodConstants;
 
-public class SuperDoctor extends SimpleRepairDroid implements ChargeEnergyDroid, RepairDroid{
+public class SuperDoctor extends SimpleRepairDroid implements ChargeEnergyDroid{
 	private final SimpleChargeEnergyDroid charger;
 	public SuperDoctor() {
 		charger=new SimpleChargeEnergyDroid();

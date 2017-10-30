@@ -3,7 +3,7 @@ package com.olga.droidsgame.droids;
 import com.olga.droidsgame.constants.DriodConstants;
 
 public class DefenderRepairDroid extends SimpleRepairDroid implements RepairDroid, DefenderDroid{
-	DefenderRepairDroid(){
+	public DefenderRepairDroid(){
 		setBasicParameters();
 	}
 	

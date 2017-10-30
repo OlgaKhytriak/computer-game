@@ -18,6 +18,11 @@ public class BattleField {
 		setTeam1(new Team(n));
 		setTeam2(new Team(n));
 	}
+	//public DroidChooser chooseStrategy(Team team) {
+	//	LOG.info(String.format("Choice strategy for team [%s]", team.getTeamName()));
+	//	return new DroidChooser();
+	//}
+	
 	public Team getTeam1() {
 		return team1;
 	}

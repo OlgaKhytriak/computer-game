@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import com.olga.droidsgame.StartGame;
 import com.olga.droidsgame.constants.GeneralProjectConstants;
 import com.olga.droidsgame.droids.BattleDroid;
-import com.olga.droidsgame.droids.BellicoseDroid;
 import com.olga.droidsgame.droids.ChargeEnergyDroid;
 import com.olga.droidsgame.droids.RepairDroid;
 import com.olga.droidsgame.droids.SimpleDroid;
@@ -131,7 +130,7 @@ public class Battle {
 			LOG.info("No energy"); 
 			return;
 		}
-		if (droidAttacker instanceof BellicoseDroid)  {
+		if (droidAttacker instanceof BattleDroid)  {
 			BattleDroid droidCanShoot = (BattleDroid) droidAttacker;
 			droidCanShoot.shoot(droidVictim);}
 		if (droidAttacker instanceof RepairDroid) {

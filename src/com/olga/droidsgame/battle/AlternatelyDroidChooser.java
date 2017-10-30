@@ -27,12 +27,9 @@ public class AlternatelyDroidChooser implements DroidChooser {
 			next=indexOfDroidLastTurnMove;
 		}
 		else next=0;
-		System.out.println("Current = "+current);
-		System.out.println(next);
 		droid = team.getTeamList().get(next);
 		setDroidJustMadeMove(droid);
 		indexOfDroidLastTurnMove=next;
-		System.out.println(droid.getDroidType());
 		return droid;
 	}
 
